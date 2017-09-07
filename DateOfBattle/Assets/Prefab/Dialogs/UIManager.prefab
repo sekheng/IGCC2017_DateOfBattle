@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1255066555117340
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +234,6 @@ MonoBehaviour:
   playerText: {fileID: 114631479679390374}
   itemPopUp: {fileID: 0}
   uiContainer: {fileID: 0}
-  notIncluded: {fileID: 0}
   NPCSprite: {fileID: 114358866928742814}
   PlayerSprite: {fileID: 114502033632893500}
   example_Items: []

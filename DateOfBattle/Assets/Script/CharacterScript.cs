@@ -15,6 +15,7 @@ public class CharacterScript : MonoBehaviour {
 
     protected const int MAXIMUM_MORALE = 100;
     protected const int DEFAULT_MORALE = 50;
+    protected const int MAXIMUM_PERSONALTY = 100;
 
     [SerializeField]
     protected int maximumHp;
@@ -98,7 +99,6 @@ public class CharacterScript : MonoBehaviour {
             return moveSpeed;
         }
     }
-
     //personal
 
     [SerializeField]
@@ -107,7 +107,7 @@ public class CharacterScript : MonoBehaviour {
     {
         set
         {
-            warlike = value;
+            warlike = Mathf.Clamp(value, 0, MAXIMUM_PERSONALTY);
         }
         get
         {
@@ -116,31 +116,31 @@ public class CharacterScript : MonoBehaviour {
     }
 
     [SerializeField]
-    protected int emotion;  //like talk
-    public int m_Emotion
+    protected int emotional;  //like talk
+    public int m_Emotional
     {
         set
         {
-            emotion = value;
+            emotional = Mathf.Clamp(value, 0, MAXIMUM_PERSONALTY);
         }
         get
         {
-            return emotion;
+            return emotional;
         }
     }
 
 
     [SerializeField]
-    protected int warily;  //dislike advace
-    public int m_Warily
+    protected int wary;  //dislike advace
+    public int m_Wary
     {
         set
         {
-            warily = value;
+            wary = Mathf.Clamp(value, 0, MAXIMUM_PERSONALTY);
         }
         get
         {
-            return warily;
+            return wary;
         }
     }
 
@@ -184,7 +184,7 @@ public class CharacterScript : MonoBehaviour {
         const int WEAKNESS_MULTIPLY = 2;
 
         //Damage set
-        switch (attackType)
+        switch (m_AttackType)
         {
             case TYPE_ATTACK.GUNSHOT:
                 if(damageType == TYPE_ATTACK.SNIPE || damageType == TYPE_ATTACK.CANNON)
@@ -217,8 +217,25 @@ public class CharacterScript : MonoBehaviour {
         m_Hp -= damage;
     }
 
-    void MoraleFluctuate()
+    //Change moralle value for act. 
+    //input: this action is balle?(0-100)
+    //input: this action is communicate?(0-100)
+    //input: this action is dynamic?(0-100)
+    void MoraleFluctuate(int battle, int communicate, int dynamic)
     {
-        m_Morale--;
+        int moraleIncrement = 0;
+        battle = Mathf.Clamp(battle, 0, MAXIMUM_PERSONALTY);
+        communicate = Mathf.Clamp(communicate, 0, MAXIMUM_PERSONALTY);
+        dynamic = Mathf.Clamp(dynamic, 0, MAXIMUM_PERSONALTY);
+
+        //what is likes charactars
+        moraleIncrement -= Mathf.Abs(battle - m_Warlike) - (MAXIMUM_PERSONALTY / 2);
+        moraleIncrement -= Mathf.Abs(communicate - m_Emotional) - (MAXIMUM_PERSONALTY / 2);
+        moraleIncrement += Mathf.Abs(dynamic - m_Wary) - (MAXIMUM_PERSONALTY / 2);
+
+        //
+        moraleIncrement /= 10;
+
+        m_Morale += moraleIncrement;
     }
 }
