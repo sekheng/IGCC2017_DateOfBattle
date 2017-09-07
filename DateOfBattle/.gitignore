@@ -10,3 +10,5 @@ Temp/
 *.DS_Store
 *.sln
 *.userprefs
+obj/Debug
+DateOfBattle/obj/Debug/build.force

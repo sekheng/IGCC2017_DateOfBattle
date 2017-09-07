@@ -20,8 +20,15 @@ public class UnitTile : TileScript
         if (other is UnitTile)
         {
             // TODO: Do something!
+            print("Peace on you: " + ((other as UnitTile).name));
         }
         return false;
+    }
+
+    private void Start()
+    {
+        // Because unit has occupied the current space!
+        canBeAccessed = false;
     }
 
     public void MoveUp()

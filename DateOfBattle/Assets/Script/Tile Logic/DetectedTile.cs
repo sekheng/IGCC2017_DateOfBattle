@@ -19,4 +19,22 @@ public class DetectedTile : MonoBehaviour {
     {
         allColliderTile.Remove(other.gameObject.GetComponent<TileScript>());
     }
+
+    /// <summary>
+    /// To get the unit that is in this tile!
+    /// 1 bad thing will be if there are more than 2 units in the tile, then we are screwed!
+    /// </summary>
+    /// <returns></returns>
+    public UnitTile GetUnitTile()
+    {
+        foreach (TileScript checkTile in allColliderTile)
+        {
+            if (checkTile is UnitTile)
+            {
+                // If found the tile, return this tile as unit tile!
+                return checkTile as UnitTile;
+            }
+        }
+        return null;
+    }
 }
