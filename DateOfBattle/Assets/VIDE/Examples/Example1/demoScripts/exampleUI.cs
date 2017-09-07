@@ -33,7 +33,7 @@ public class exampleUI : MonoBehaviour
     public Text playerText;
     public GameObject itemPopUp;
     public GameObject uiContainer;
-    public GameObject notIncluded;
+   // public GameObject notIncluded;
 
     //We'll use these later
     bool dialoguePaused = false;
@@ -54,7 +54,7 @@ public class exampleUI : MonoBehaviour
 
     void Start()
     {
-       notIncluded.SetActive(true);
+      // notIncluded.SetActive(true);
 
        VD.LoadDialogues(); //Load all dialogues to memory so that we dont spend time doing so later
     }
@@ -135,8 +135,8 @@ public class exampleUI : MonoBehaviour
             }
         }
 
-        if (Input.anyKeyDown && notIncluded.activeSelf)
-            notIncluded.SetActive(false);
+        //if (Input.anyKeyDown && notIncluded.activeSelf)
+        //    notIncluded.SetActive(false);
     }
 
     //examplePlayer.cs calls this one to move forward in the conversation
