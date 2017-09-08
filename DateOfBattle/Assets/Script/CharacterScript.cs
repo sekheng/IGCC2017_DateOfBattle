@@ -17,7 +17,7 @@ public class CharacterScript : MonoBehaviour {
     protected const int DEFAULT_MORALE = 50;
     protected const int MAXIMUM_PERSONALTY = 100;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The unit max health")]
     protected int maximumHp;
     public int m_MaximumHp
     {
@@ -58,7 +58,7 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
-    [SerializeField]
+    [SerializeField, Tooltip("The unit attack type")]
     protected TYPE_ATTACK attackType;
     public TYPE_ATTACK m_AttackType
     {
@@ -72,7 +72,7 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
-    [SerializeField]
+    [SerializeField, Tooltip("The unit attack interval")]
     protected int cooldown;
     public int m_Cooldown
     {
@@ -86,7 +86,7 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
-    [SerializeField]
+    [SerializeField, Tooltip("The unit move speed")]
     protected int moveSpeed;
     public int m_MoveSpeed
     {
@@ -101,7 +101,7 @@ public class CharacterScript : MonoBehaviour {
     }
     //personal
 
-    [SerializeField]
+    [SerializeField, Tooltip("personal:the character like battle(0-100)")]
     protected int warlike;  //like attack
     public int m_Warlike
     {
@@ -115,7 +115,7 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
-    [SerializeField]
+    [SerializeField, Tooltip("personal:the character like communicate(0-100)")]
     protected int emotional;  //like talk
     public int m_Emotional
     {
@@ -130,7 +130,7 @@ public class CharacterScript : MonoBehaviour {
     }
 
 
-    [SerializeField]
+    [SerializeField, Tooltip("personal:the character dislike dynamic act(0-100)")]
     protected int wary;  //dislike advace
     public int m_Wary
     {
