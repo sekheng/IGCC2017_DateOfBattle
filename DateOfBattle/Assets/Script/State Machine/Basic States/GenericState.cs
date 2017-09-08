@@ -6,6 +6,7 @@ using UnityEngine;
 /// The generic state so that no instantiating will be allowed!
 /// </summary>
 public abstract class GenericState : MonoBehaviour {
+    [Header("The Generic State References. They should already be assigned in codes!")]
     [Tooltip("The state name for identification! No need to put anything inside as it should be done at the State Start")]
     public string stateName;
     [Tooltip("The FSM owner for callback purpose. There is no need to link as UnitFSM Start is doing it!")]
@@ -26,7 +27,7 @@ public abstract class GenericState : MonoBehaviour {
     /// For interacting with other states!
     /// </summary>
     /// <param name="argument"></param>
-    /// <returns></returns>
+    /// <returns>Return false since there is nothing to interact with a generic state!</returns>
     public virtual bool interactWithState(object argument)
     {
         return false;

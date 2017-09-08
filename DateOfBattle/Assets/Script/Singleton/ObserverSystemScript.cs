@@ -14,6 +14,8 @@ public class ObserverSystemScript : MonoBehaviour {
     private Dictionary<string, object> m_NameStoredMessage = new Dictionary<string, object>();
     // This is to remove the event and variable name!
     private string ToRemoveTheEventVariable;
+    // in order to keep track of updating the coroutine
+    Coroutine removeVariableCoroutine;
 
     public static ObserverSystemScript Instance
     {
@@ -33,13 +35,35 @@ public class ObserverSystemScript : MonoBehaviour {
         }
     }
 
-    void LateUpdate()
+    private void OnDisable()
     {
-        if (ToRemoveTheEventVariable != null)
+        if (removeVariableCoroutine != null)
         {
-            m_NameStoredMessage.Remove(ToRemoveTheEventVariable);
-            ToRemoveTheEventVariable = null;
+            StopCoroutine(removeVariableCoroutine);
+            removeVariableCoroutine = null;
         }
+    }
+
+    //void LateUpdate()
+    //{
+    //    if (ToRemoveTheEventVariable != null)
+    //    {
+    //        m_NameStoredMessage.Remove(ToRemoveTheEventVariable);
+    //        ToRemoveTheEventVariable = null;
+    //    }
+    //}
+
+    /// <summary>
+    /// The coroutine to remove the event variable for the next frame.
+    /// </summary>
+    /// <returns></returns>
+    protected IEnumerator removeVariableRoutine()
+    {
+        yield return null;
+        m_NameStoredMessage.Remove(ToRemoveTheEventVariable);
+        ToRemoveTheEventVariable = null;
+        removeVariableCoroutine = null;
+        yield break;
     }
 
     /// <summary>
@@ -122,6 +146,7 @@ public class ObserverSystemScript : MonoBehaviour {
         if (ToRemoveTheEventVariable != null)
         {
             ToRemoveTheEventVariable = eventName;
+            removeVariableCoroutine = StartCoroutine(removeVariableRoutine());
             return true;
         }
         return false;

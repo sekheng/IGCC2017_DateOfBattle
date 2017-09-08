@@ -8,7 +8,7 @@ public class Grid : MonoBehaviour {
     Node[,] grid;
     public float nodeRadius = 0.5f;
     public Transform selectUnitTransform;
-
+    public Vector2 squareSize = new Vector2(2.56f, 2.56f);
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
@@ -38,7 +38,8 @@ public class Grid : MonoBehaviour {
             for (int y = 0; y < gridSizeY; ++y)
             {
                 Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
-                bool walkable = !Physics2D.OverlapCircle(worldPt, nodeRadius, unwalkableMask);
+                // Have to minus 0.1f otherwise it will occupy more than 1 cube!
+                bool walkable = !Physics2D.OverlapCircle(worldPt, nodeRadius - 0.1f, unwalkableMask);
                 grid[x, y] = new Node(walkable, worldPt, x, y);
             }
         }
@@ -58,6 +59,7 @@ public class Grid : MonoBehaviour {
     public List<Node> path;
     private void OnDrawGizmos()
     {
+        Vector3 smallCubeSize = new Vector3(squareSize.x, squareSize.y, 1);
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));
         if (grid != null)
         {
@@ -78,7 +80,7 @@ public class Grid : MonoBehaviour {
                 }
                 else
                     Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                Gizmos.DrawWireCube(n.worldPos, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.DrawWireCube(n.worldPos, Vector3.one * (nodeDiameter - 0.1f));
             }
         }
     }
