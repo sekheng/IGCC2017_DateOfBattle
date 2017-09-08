@@ -78,7 +78,7 @@ public class Grid : MonoBehaviour {
                 }
                 else
                     Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                Gizmos.DrawCube(n.worldPos, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.DrawWireCube(n.worldPos, Vector3.one * (nodeDiameter - .1f));
             }
         }
     }

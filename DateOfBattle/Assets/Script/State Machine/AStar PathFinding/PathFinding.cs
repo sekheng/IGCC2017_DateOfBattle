@@ -15,9 +15,6 @@ public class PathFinding : MonoBehaviour {
     {
         m_grid = GetComponent<Grid>();
         requestManager = GetComponent<PathRequestManager>();
-#if UNITY_EDITOR
-        StartCoroutine(FindPath(seeker.position, target.position));
-#endif
     }
 #if UNITY_EDITOR
     /// <summary>
@@ -26,8 +23,7 @@ public class PathFinding : MonoBehaviour {
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Space))
-        //FindPath(seeker.position, target.position);
-        FindPathEditor(seeker.position, target.position);
+        //FindPathEditor(seeker.position, target.position);
     }
 #endif
     IEnumerator FindPath(Vector3 startPos, Vector3 endPos)
@@ -103,8 +99,7 @@ public class PathFinding : MonoBehaviour {
         {
             wayPoints = RetracePath(startNode, endNode);
         }
-        // TODO: Uncomment this!
-        //requestManager.FinishedProcessingPath(wayPoints, isSuccessFind);
+        requestManager.FinishedProcessingPath(wayPoints, isSuccessFind);
     }
 
     void FindPathEditor(Vector3 startPos, Vector3 endPos)
@@ -176,20 +171,27 @@ public class PathFinding : MonoBehaviour {
 
     Vector3[] RetracePath(Node startNode, Node endNode)
     {
+#if UNITY_EDITOR
         List<Node> path = new List<Node>();
+#endif
         Node anotherCurrentNode = endNode;
+        List<Vector3> waypoints = new List<Vector3>();
         while (anotherCurrentNode != startNode)
         {
+            waypoints.Add(anotherCurrentNode.worldPos);
+#if UNITY_EDITOR
             path.Add(anotherCurrentNode);
+#endif
             anotherCurrentNode = anotherCurrentNode.parent;
         }
-        Vector3[] waypoints = SimplifyPath(path);
+        //Vector3[] waypoints = SimplifyPath(path);
         //path.Reverse();
-        Array.Reverse(waypoints);
+        //Array.Reverse(waypoints);
+        waypoints.Reverse();
 #if UNITY_EDITOR
         m_grid.path = path;
 #endif
-        return waypoints;
+        return waypoints.ToArray();
     }
 
     Vector3[] SimplifyPath(List<Node> path)
