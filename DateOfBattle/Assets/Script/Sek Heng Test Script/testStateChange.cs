@@ -8,6 +8,8 @@ using UnityEngine;
 public class testStateChange : MonoBehaviour {
     public UnitFSM unitStateMachine;
 
+    public TileScript targetTile;
+
 	// Use this for initialization
 	void Start () {
         StartCoroutine(changeStateAfterStart());
@@ -17,6 +19,7 @@ public class testStateChange : MonoBehaviour {
     {
         yield return null;
         yield return null;
+        unitStateMachine.GetGenericState("MoveState").interactWithState(targetTile);
         unitStateMachine.ChangeCurrentState("MoveState");
         yield break;
     }

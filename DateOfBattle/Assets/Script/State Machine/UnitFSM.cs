@@ -58,7 +58,8 @@ public class UnitFSM : MonoBehaviour {
     /// <returns></returns>
     IEnumerator UpdatingStates()
     {
-        Coroutine stateCoroutine = StartCoroutine(currentState.updateState());
+        // because the state should update on their own!
+        Coroutine stateCoroutine = currentState.StartCoroutine(currentState.updateState());
         yield return stateCoroutine;
         // reset the value once the update is done!
         if (currentState)
