@@ -72,6 +72,20 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
+    [SerializeField, Tooltip("The unit attack damage")]
+    protected int attackDamage;
+    public int m_AttackDamage
+    {
+        set
+        {
+            attackDamage = value;
+        }
+        get
+        {
+            return attackDamage;
+        }
+    }
+
     [SerializeField, Tooltip("The unit attack interval")]
     protected int cooldown;
     public int m_Cooldown
@@ -99,6 +113,21 @@ public class CharacterScript : MonoBehaviour {
             return moveSpeed;
         }
     }
+
+    [SerializeField, Tooltip("The unit attack range")]
+    protected int range;
+    public int m_Range
+    {
+        set
+        {
+            range = value;
+        }
+        get
+        {
+            return range;
+        }
+    }
+
     //personal
 
     [SerializeField, Tooltip("personal:the character like battle(0-100)")]
@@ -143,20 +172,22 @@ public class CharacterScript : MonoBehaviour {
             return wary;
         }
     }
-
+    
+    [Tooltip("Health bar")]
+    public GameObject m_healthBar;
 
     // Use this for initialization
     void Start () {
         m_Morale = DEFAULT_MORALE;
-        m_Hp = m_MaximumHp;
     }
 	
     void Action()
     {
     }
 
-    void Attack()
+    public void Attack()
     {
+        Debug.Log("attacking");
         switch (attackType)
         {
             case TYPE_ATTACK.NONE:
@@ -179,7 +210,7 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
-    void Damage(int damage, TYPE_ATTACK damageType)
+    public void Damage(int damage, TYPE_ATTACK damageType)
     {
         const int WEAKNESS_MULTIPLY = 2;
 
@@ -215,6 +246,7 @@ public class CharacterScript : MonoBehaviour {
                 break;
         }
         m_Hp -= damage;
+        m_healthBar.transform.localScale = new Vector3((float)m_Hp / m_MaximumHp,0.1f, 1.0f);
     }
 
     //Change moralle value for act. 
@@ -237,5 +269,10 @@ public class CharacterScript : MonoBehaviour {
         moraleIncrement /= 10;
 
         m_Morale += moraleIncrement;
+    }
+
+    public bool IsDead()
+    {
+        return m_Hp <= 0;
     }
 }
