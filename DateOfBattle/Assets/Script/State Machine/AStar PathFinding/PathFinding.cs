@@ -194,6 +194,12 @@ public class PathFinding : MonoBehaviour {
         return waypoints.ToArray();
     }
 
+    /// <summary>
+    /// Simplify task is not used in this project because although it really does shorten the path to take.
+    /// It is not we want it to be in the game.
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     Vector3[] SimplifyPath(List<Node> path)
     {
         List<Vector3> waypoints = new List<Vector3>();

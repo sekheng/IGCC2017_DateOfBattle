@@ -13,6 +13,8 @@ public class MoveState : GenericState {
     [Header("The debugging and linking values")]
     [Tooltip("The Tile to move towards to")]
     public TileScript moveToTile;
+    [Tooltip("The position to move towards to")]
+    public Vector3 moveTowardsPos;
     [Tooltip("To get the character stats. Linking is not required.")]
     public CharacterScript charStats;
     [SerializeField, Tooltip("The flag to wait for the path request manager to come back")]
@@ -31,11 +33,13 @@ public class MoveState : GenericState {
     /// To update the movement to this point! 
     /// </summary>
 	public override IEnumerator updateState() {
-        // If the tile does not exist, do not bother to update it
-        if (!moveToTile)
-            yield break;
+        if (moveToTile)
         // Request the movement from PathRequestManager
-        PathRequestManager.RequestPath(transform.position, moveToTile.transform.position, OnPathFound);
+            PathRequestManager.RequestPath(transform.position, moveToTile.transform.position, OnPathFound);
+        else
+        {
+            PathRequestManager.RequestPath(transform.position, moveTowardsPos, OnPathFound);
+        }
         // Wait till it has find the path!
         while (!hasFinishedPath)
             yield return null;
@@ -92,6 +96,15 @@ public class MoveState : GenericState {
     /// <returns>return true if casting is successful</returns>
     public override bool interactWithState(object argument)
     {
+        // If it is just position
+        if (argument is Vector2)
+        {
+            Vector2 movePos = (Vector2)argument;
+            // So that the z-position will remain
+            moveTowardsPos = new Vector3(movePos.x, movePos.y, transform.position.z);
+            moveToTile = null;
+            return true;
+        }
         moveToTile = argument as TileScript;
         // If the object is there, then the casting is successful so return true
         if (moveToTile)
