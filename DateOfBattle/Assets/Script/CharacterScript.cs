@@ -30,7 +30,7 @@ public class CharacterScript : MonoBehaviour {
             return maximumHp;
         }
     }
-
+    [SerializeField, Tooltip("The unit health")]
     protected int hp;
     public int m_Hp
     {
