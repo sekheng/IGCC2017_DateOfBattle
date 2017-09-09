@@ -155,6 +155,20 @@ Prefab:
       propertyPath: m_Name
       value: Health Trigger Stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 212001502269034758, guid: 3bcf03458e14c8249b486d25613efac4,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212001502269034758, guid: 3bcf03458e14c8249b486d25613efac4,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.6137934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_TagString
+      value: EnemyFortress
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
   m_IsPrefabParent: 0
@@ -163,6 +177,33 @@ Transform:
   m_PrefabParentObject: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4,
     type: 2}
   m_PrefabInternal: {fileID: 91488972}
+--- !u!1 &91488974 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4,
+    type: 2}
+  m_PrefabInternal: {fileID: 91488972}
+--- !u!114 &91488975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91488974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee0b67fcc239b740b4e448233e9b621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHp: 1000
+  hp: 1000
+  attackType: -1
+  attackDamage: 0
+  cooldown: 0
+  moveSpeed: 0
+  range: 0
+  warlike: 0
+  emotional: 0
+  wary: 0
+  m_healthBar: {fileID: 0}
 --- !u!1001 &809682351
 Prefab:
   m_ObjectHideFlags: 0
@@ -300,7 +341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999291513
 GameObject:
@@ -379,7 +420,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1048607762
 Prefab:
@@ -418,11 +459,165 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4397231702531898, guid: 28472cf9474f96e4d86798fa5e68dac0, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1748446749870836, guid: 28472cf9474f96e4d86798fa5e68dac0, type: 2}
+      propertyPath: m_Name
+      value: Singleton Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114994058777398004, guid: 28472cf9474f96e4d86798fa5e68dac0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 28472cf9474f96e4d86798fa5e68dac0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1241618707
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1439982114}
+    m_Modifications:
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_Name
+      value: Health Trigger Stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 212001502269034758, guid: 3bcf03458e14c8249b486d25613efac4,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212001502269034758, guid: 3bcf03458e14c8249b486d25613efac4,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.6137934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+      propertyPath: m_TagString
+      value: PlayerFortress
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3bcf03458e14c8249b486d25613efac4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1241618708 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4571708988617364, guid: 3bcf03458e14c8249b486d25613efac4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1241618707}
+--- !u!1 &1241618709 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1004953316134050, guid: 3bcf03458e14c8249b486d25613efac4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1241618707}
+--- !u!114 &1241618710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241618709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee0b67fcc239b740b4e448233e9b621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHp: 1000
+  hp: 1000
+  attackType: -1
+  attackDamage: 0
+  cooldown: 0
+  moveSpeed: 0
+  range: 0
+  warlike: 0
+  emotional: 0
+  wary: 0
+  m_healthBar: {fileID: 0}
+--- !u!1 &1297634834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1297634837}
+  - component: {fileID: 1297634836}
+  - component: {fileID: 1297634835}
+  m_Layer: 0
+  m_Name: Local Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1297634835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297634834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecee7e2b50031c488cb51fd85a0164b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1297634836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297634834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b904ac3fa29734cb9e9e31cc5f12ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerClickedTile: {fileID: 0}
+--- !u!4 &1297634837
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297634834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1322924548
 Prefab:
   m_ObjectHideFlags: 0
@@ -460,7 +655,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4793191074137144, guid: da83ab42c0220424aa3da95fee5e39a9, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1834581447620028, guid: da83ab42c0220424aa3da95fee5e39a9, type: 2}
       propertyPath: m_Name
@@ -479,6 +674,35 @@ Transform:
   m_PrefabParentObject: {fileID: 4793191074137144, guid: da83ab42c0220424aa3da95fee5e39a9,
     type: 2}
   m_PrefabInternal: {fileID: 1322924548}
+--- !u!1 &1439982113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1439982114}
+  m_Layer: 0
+  m_Name: Player Fortress tiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439982114
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439982113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.63, y: -2.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1241618708}
+  m_Father: {fileID: 1322924549}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1455469055
 Prefab:
   m_ObjectHideFlags: 0
@@ -538,7 +762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1746137550}
   m_Layer: 0
-  m_Name: Fortress tiles
+  m_Name: Enemy Fortress tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
