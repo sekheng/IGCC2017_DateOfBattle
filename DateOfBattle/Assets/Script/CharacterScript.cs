@@ -17,6 +17,8 @@ public class CharacterScript : MonoBehaviour {
     protected const int DEFAULT_MORALE = 50;
     protected const int MAXIMUM_PERSONALTY = 100;
 
+    public TileScript myTile;
+
     [SerializeField, Tooltip("The unit max health")]
     protected int maximumHp;
     public int m_MaximumHp
@@ -185,7 +187,7 @@ public class CharacterScript : MonoBehaviour {
     {
     }
 
-    public void Attack()
+    public void Attack(CharacterScript targetChara)
     {
         Debug.Log("attacking");
         switch (attackType)
@@ -208,11 +210,13 @@ public class CharacterScript : MonoBehaviour {
                 //HEAL
                 break;
         }
+        targetChara.Damage(m_AttackDamage, m_AttackType);
     }
 
     public void Damage(int damage, TYPE_ATTACK damageType)
     {
         const int WEAKNESS_MULTIPLY = 2;
+        float damageRate = 1.0f;
 
         //Damage set
         switch (m_AttackType)
@@ -220,32 +224,33 @@ public class CharacterScript : MonoBehaviour {
             case TYPE_ATTACK.GUNSHOT:
                 if(damageType == TYPE_ATTACK.SNIPE || damageType == TYPE_ATTACK.CANNON)
                 {
-                    damage *= WEAKNESS_MULTIPLY;
+                    damageRate *= WEAKNESS_MULTIPLY;
                 }
                 break;
             case TYPE_ATTACK.ASSULT:
                 if (damageType == TYPE_ATTACK.GUNSHOT || damageType == TYPE_ATTACK.CANNON)
                 {
-                    damage *= WEAKNESS_MULTIPLY;
+                    damageRate *= WEAKNESS_MULTIPLY;
                 }
                 break;
             case TYPE_ATTACK.SNIPE:
                 if (damageType == TYPE_ATTACK.ASSULT)
                 {
-                    damage *= WEAKNESS_MULTIPLY;
+                    damageRate *= WEAKNESS_MULTIPLY;
                 }
                 break;
             case TYPE_ATTACK.CANNON:
                 if (damageType == TYPE_ATTACK.SNIPE)
                 {
-                    damage *= WEAKNESS_MULTIPLY;
+                    damageRate *= WEAKNESS_MULTIPLY;
                 }
                 break;
             case TYPE_ATTACK.HEAL:
                 //HEAL
                 break;
         }
-        m_Hp -= damage;
+//        Debug.Log((int)(damage * damageRateMorale));
+        m_Hp -= (int)(damage * damageRate);
         m_healthBar.transform.localScale = new Vector3((float)m_Hp / m_MaximumHp,0.1f, 1.0f);
     }
 
