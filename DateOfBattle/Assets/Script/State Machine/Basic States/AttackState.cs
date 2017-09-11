@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// This will be the attack state of the unit
 /// </summary>
-
 public class AttackState : GenericState{
 
     [Tooltip("To get the character stats. Linking is not required.")]
