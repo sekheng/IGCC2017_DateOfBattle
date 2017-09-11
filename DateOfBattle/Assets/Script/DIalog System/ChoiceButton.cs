@@ -18,10 +18,11 @@ public class ChoiceButton : MonoBehaviour {
 		
 	}
 
-    //  ボタンテキスのセット
+    //  ボタンテキストのセット
     public void SetText(string newText)
     {
-        this.GetComponent<Text>().text = newText;
+        //this.GetComponent<Text>().text = newText;     //error
+        GameObject.Find("Text").GetComponent<Text>().text = newText;
     }
 
     //  オプションのセット
