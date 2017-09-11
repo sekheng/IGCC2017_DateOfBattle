@@ -8,8 +8,8 @@ using UnityEngine;
 public class testAki : MonoBehaviour
 {
     public UnitFSM unitStateMachine;
-
-    public TileScript targetTile;
+    
+    public CharacterScript targetChara;
 
     // Use this for initialization
     void Start()
@@ -21,7 +21,7 @@ public class testAki : MonoBehaviour
     {
         yield return null;
         yield return null;
-        unitStateMachine.GetGenericState("AttackState").interactWithState(targetTile);
+        unitStateMachine.GetGenericState("AttackState").interactWithState(targetChara);
         unitStateMachine.ChangeCurrentState("AttackState");
         yield break;
     }
