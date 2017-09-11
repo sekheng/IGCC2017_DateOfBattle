@@ -31,23 +31,14 @@ public class UnitTile : TileScript
         canBeAccessed = false;
     }
 
-    public void MoveUp()
+    /// <summary>
+    /// When it dies, trigger the "died" event at Observer System!
+    /// For Player Unit, it should trigger "PlayerUnitDied".
+    /// For Enemy Unit, it should trigger "EnemyUnitDied".
+    /// </summary>
+    private void OnDestroy()
     {
-        
-    }
-
-    public void MoveDown()
-    {
-
-    }
-
-    public void MoveLeft()
-    {
-
-    }
-
-    public void MoveRight()
-    {
-
+        // The tag will be doing it for us to check whether is it the player or enemy unit!
+        ObserverSystemScript.Instance.TriggerEvent(tag + "UnitDied");
     }
 }
