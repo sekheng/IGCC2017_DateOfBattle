@@ -10,8 +10,11 @@ public class UnitFSM : MonoBehaviour {
     protected GenericState[] m_AllGenericStates;
     [Tooltip("The current state that this FSM is in!")]
     public GenericState currentState;
-    // To keep track of the update state
-    protected Coroutine updateStateCoroutine;
+    // To keep track of the update state. You can only see it!
+    public Coroutine updateStateCoroutine
+    {
+        get; protected set;
+    }
 
 	// Use this for initialization
 	void Awake () {

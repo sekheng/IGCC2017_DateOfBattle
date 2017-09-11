@@ -20,13 +20,64 @@ public class GameManager : MonoBehaviour {
     public int m_PlayerUnitsLeft;
     [Tooltip("How many enemy units are there!")]
     public int m_EnemyUnitsLeft;
-    
-	// Use this for initialization
-	void Start () {
+    [SerializeField,Tooltip("The flag to show whose turn is it!")]
+    protected bool m_isItPlayerTurn = true;
+    /// <summary>
+    /// To be set by the Unity inspector to toggle whose turn to move!
+    /// </summary>
+    public bool isItPlayerTurn
+    {
+        set
+        {
+            // Need to make sure the value is not the same!
+            m_isItPlayerTurn = value;
+            // Begin updating of the manger depending on the flag!
+            switch(m_isItPlayerTurn)
+            {
+                case false:
+                    EnemyAIManager.Instance.StartCoroutine(EnemyAIManager.Instance.updateOwnUnits());
+                    break;
+                default:
+                    PlayerManager.Instance.StartCoroutine(PlayerManager.Instance.updateOwnUnits());
+                    break;
+            }
+        }
+        get
+        {
+            return m_isItPlayerTurn;
+        }
+    }
+
+    // The GameManager Singleton!
+    public static GameManager Instance
+    {
+        get; private set;
+    }
+
+    /// <summary>
+    /// Need to set up the singleton for GameManager.
+    /// </summary>
+    private void Awake()
+    {
+        // If this instance has already exists, just destroy it!
+        if (Instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         // When the game starts, just get the number of units for each side!
         m_PlayerUnitsLeft = GameObject.FindGameObjectsWithTag("Player").Length;
         m_EnemyUnitsLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
-	}
+        // Since the intro will play, just set it to be active regardless what!
+        m_introDisplayGO.SetActive(true);
+    }
 
     private void OnEnable()
     {
@@ -86,5 +137,14 @@ public class GameManager : MonoBehaviour {
     protected void enemyLostFortress()
     {
         m_wonDisplayGO.SetActive(true);
+    }
+
+    /// <summary>
+    /// Another setter meant for Unity Inspector to call the function!
+    /// </summary>
+    /// <param name="playerTurn">The flag to set whose turn to move!</param>
+    public void SetTurnToMove(bool playerTurn)
+    {
+
     }
 }

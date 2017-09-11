@@ -14,7 +14,7 @@ public class AttackState : GenericState{
     [Tooltip("The Tile to attack towards to")]
     public TileScript targetToTile;
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
 
         // Making sure the name is the same.
         stateName = "AttackState";

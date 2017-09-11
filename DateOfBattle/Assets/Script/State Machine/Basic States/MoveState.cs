@@ -8,7 +8,7 @@ using UnityEngine;
 public class MoveState : GenericState {
     [Header("The value needed for move state")]
     [Tooltip("The animating movement speed. Different from Character stat move speed.")]
-    public float m_animMoveSpeed = 5.0f;
+    public float m_animMoveSpeed = 0.3f;
 
     [Header("The debugging and linking values")]
     [Tooltip("The Tile to move towards to")]
@@ -18,12 +18,12 @@ public class MoveState : GenericState {
     [Tooltip("To get the character stats. Linking is not required.")]
     public CharacterScript charStats;
     [SerializeField, Tooltip("The flag to wait for the path request manager to come back")]
-    bool hasFinishedPath = false;
+    protected bool hasFinishedPath = false;
     [SerializeField, Tooltip("The waypoints that the unit needs to follow")]
-    Vector3[] m_wayptToFollow;
+    protected Vector3[] m_wayptToFollow;
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
         // Making sure the name is the same.
         stateName = "MoveState";
         charStats = GetComponent<CharacterScript>();
