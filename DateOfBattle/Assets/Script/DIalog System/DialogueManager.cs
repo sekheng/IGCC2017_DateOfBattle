@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour {
 
             //  キャラスプライトの取得
             SpriteRenderer currSprite = character.GetComponent<SpriteRenderer>();
-            currSprite.sprite = character.GetComponent<Character>().characterPoses[m_pose];
+            //currSprite.sprite = character.GetComponent<Character>().characterPoses[m_pose];   //errorPoint
         }
     }
 
@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour {
             GameObject button = (GameObject)Instantiate(m_choiceBox);
             Button b = button.GetComponent<Button>();
             ChoiceButton cb = button.GetComponent<ChoiceButton>();
-            cb.SetText(m_options[i].Split(':')[0]);
+            cb.SetText(m_options[i].Split(':')[0]);                     //errorOK
             cb.m_option = m_options[i].Split(':')[1];
             cb.m_box = this;
             b.transform.SetParent(this.transform);

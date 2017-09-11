@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VIDE_Data;
 
-public class PlayerController : MonoBehaviour {
+public class textureim : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
