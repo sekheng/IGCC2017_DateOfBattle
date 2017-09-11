@@ -47,8 +47,10 @@ public class EnemyAIManager : MonoBehaviour {
             enemyUnitFSM.GetGenericState("MoveState").interactWithState("PLAYERFORTRESS");
             enemyUnitFSM.ChangeCurrentState("MoveState");
             // Wait till it finishes updating!
-            yield return enemyUnitFSM.updateStateCoroutine;
-            yield return null;
+            //yield return enemyUnitFSM.updateStateCoroutine;
+            //yield return null;
+            while (enemyUnitFSM.updateStateCoroutine != null)
+                yield return null;
         }
         // When everything is done, then switch the turn at GameManager!
         GameManager.Instance.isItPlayerTurn = true;

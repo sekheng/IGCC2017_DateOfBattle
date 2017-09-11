@@ -70,6 +70,7 @@ public class UnitFSM : MonoBehaviour {
             currentState.resetState();
             currentState = null;
         }
+        updateStateCoroutine = null;
         yield break;
     }
 
