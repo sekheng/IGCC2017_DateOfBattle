@@ -40,6 +40,8 @@ public class EnemyMoveState : MoveState {
         while (!hasFinishedPath)
             yield return null;
         int m_MoveCountDown = charStats.m_MoveSpeed, currentMoveIndex = 0;
+        // Dont forget to include the original position
+        m_originalPos = transform.position;
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -48,24 +50,12 @@ public class EnemyMoveState : MoveState {
             {
                 ++currentMoveIndex;
                 --m_MoveCountDown;
-                yield return null;
-                // Then check for nearby player units and fortress!
-                foreach (GameObject playerUnitGO in PlayerManager.Instance.m_playerGOList)
+                CharacterScript nearbyUnit = checkForUnitsInRange();
+                if (nearbyUnit)
                 {
-                    if (charStats.m_Range >= Vector3.Distance(transform.position, playerUnitGO.transform.position))
-                    {
-                        // Then we can attack! Change to attack state! and send the tile information!
-                        m_FSMOwner.GetGenericState("AttackState").interactWithState(playerUnitGO.GetComponent<TileScript>());
-                        m_FSMOwner.ChangeCurrentState("AttackState");
-                        yield break;
-                    }
-                }
-                // Looping and range is too small, check for fortress distance!
-                if (charStats.m_Range >= Vector3.Distance(transform.position, playerFortressTile.transform.position))
-                {
-                    // Then we can attack! Change to attack state!
-                    m_FSMOwner.GetGenericState("AttackState").interactWithState(playerFortressTile.GetComponent<TileScript>());
+                    m_FSMOwner.GetGenericState("AttackState").interactWithState(nearbyUnit);
                     m_FSMOwner.ChangeCurrentState("AttackState");
+                    // Need to tell the Grid about the newly occupied grid!
                     yield break;
                 }
             }
@@ -101,5 +91,30 @@ public class EnemyMoveState : MoveState {
         }
         // If it not what enemy move state wants, then check the parent interact with state!
         return base.interactWithState(argument);
+    }
+
+    /// <summary>
+    /// Check for any player units or fortress is nearby!
+    /// </summary>
+    /// <returns>Return any nearby units. If none, check whether the fortress is nearby. If not, return nothing</returns>
+    protected CharacterScript checkForUnitsInRange()
+    {
+        foreach (GameObject playerUnitGO in PlayerManager.Instance.m_playerGOList)
+        {
+            if (charStats.m_Range >= Vector3.Distance(transform.position, playerUnitGO.transform.position))
+            {
+                return playerUnitGO.GetComponent<CharacterScript>();
+            }
+        }
+        if (charStats.m_Range >= Vector3.Distance(transform.position, playerFortressTile.transform.position))
+        {
+            return playerFortressTile.GetComponent<CharacterScript>();
+        }
+        return null;
+    }
+
+    public override void resetState()
+    {
+        base.resetState();
     }
 }

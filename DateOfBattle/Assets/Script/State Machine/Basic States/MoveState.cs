@@ -21,6 +21,8 @@ public class MoveState : GenericState {
     protected bool hasFinishedPath = false;
     [SerializeField, Tooltip("The waypoints that the unit needs to follow")]
     protected Vector3[] m_wayptToFollow;
+    [SerializeField, Tooltip("The original position of the unit before moving to another position!")]
+    protected Vector3 m_originalPos;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -44,6 +46,7 @@ public class MoveState : GenericState {
         while (!hasFinishedPath)
             yield return null;
         int m_MoveCountDown = charStats.m_MoveSpeed, currentMoveIndex = 0;
+        m_originalPos = transform.position;
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -59,6 +62,7 @@ public class MoveState : GenericState {
             }
             yield return null;
         }
+        reportToGridNewPos();
         yield break;
 	}
 
@@ -74,13 +78,14 @@ public class MoveState : GenericState {
         }
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         // Need to stop the coroutine
         StopCoroutine("updateState");
         // Need to make sure moveToTile is null!
         moveToTile = null;
         hasFinishedPath = false;
+        reportToGridNewPos();
     }
 
     public override void resetState()
@@ -112,5 +117,17 @@ public class MoveState : GenericState {
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Meant to report back to the grid.
+    /// Purpose is to make the original position to become walkable then the new position unwalkable!
+    /// </summary>
+    protected void reportToGridNewPos()
+    {
+        Node originalNode = Grid.Instance.NodeFromWorldPt(m_originalPos);
+        originalNode.walkable = true;
+        Node newNode = Grid.Instance.NodeFromWorldPt(transform.position);
+        newNode.walkable = false;
     }
 }

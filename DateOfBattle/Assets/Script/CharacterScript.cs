@@ -251,7 +251,9 @@ public class CharacterScript : MonoBehaviour {
         }
 //        Debug.Log((int)(damage * damageRateMorale));
         m_Hp -= (int)(damage * damageRate);
-        m_healthBar.transform.localScale = new Vector3((float)m_Hp / m_MaximumHp,0.1f, 1.0f);
+        // If there is a healthbar gameobject! because some scenes need testing.
+        if (m_healthBar)
+            m_healthBar.transform.localScale = new Vector3((float)m_Hp / m_MaximumHp,0.1f, 1.0f);
     }
 
     //Change moralle value for act. 

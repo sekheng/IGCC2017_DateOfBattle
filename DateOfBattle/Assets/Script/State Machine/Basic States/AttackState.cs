@@ -39,7 +39,9 @@ public class AttackState : GenericState{
 
             if(charStats.IsDead())
             {
-                Debug.Log("it is die.");
+                //Debug.Log("it is die.");
+                //TODO: for now, Destroy the game object of the Unit until there is a particle effect system to enhance the graphics
+                Destroy(charStats.gameObject);
             }
         }
         else

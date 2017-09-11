@@ -14,12 +14,10 @@ public class GameManager : MonoBehaviour {
     public GameObject m_wonDisplayGO;
     [Tooltip("The gameobject of the screen that display player lost!")]
     public GameObject m_lostDisplayGO;
+    [Tooltip("Need to stop the player input in order to prevent bugs!")]
+    public PlayerBattleMouse m_playerMouseInput;
 
     [Header("Debugging References and they will be automatically linked inside codes. Do not touch!")]
-    [Tooltip("How many player units are there!")]
-    public int m_PlayerUnitsLeft;
-    [Tooltip("How many enemy units are there!")]
-    public int m_EnemyUnitsLeft;
     [SerializeField,Tooltip("The flag to show whose turn is it!")]
     protected bool m_isItPlayerTurn = true;
     /// <summary>
@@ -36,8 +34,12 @@ public class GameManager : MonoBehaviour {
             {
                 case false:
                     EnemyAIManager.Instance.StartCoroutine(EnemyAIManager.Instance.updateOwnUnits());
+                    // Disable the inputs!
+                    m_playerMouseInput.enabled = false;
                     break;
                 default:
+                    // Enable the inputs!
+                    m_playerMouseInput.enabled = true;
                     PlayerManager.Instance.StartCoroutine(PlayerManager.Instance.updateOwnUnits());
                     break;
             }
@@ -72,9 +74,6 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        // When the game starts, just get the number of units for each side!
-        m_PlayerUnitsLeft = GameObject.FindGameObjectsWithTag("Player").Length;
-        m_EnemyUnitsLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
         // Since the intro will play, just set it to be active regardless what!
         m_introDisplayGO.SetActive(true);
     }
@@ -83,43 +82,14 @@ public class GameManager : MonoBehaviour {
     {
         ObserverSystemScript.Instance.SubscribeEvent("PlayerFortressLost", playerLostFortress);
         ObserverSystemScript.Instance.SubscribeEvent("EnemyFortressLost", enemyLostFortress);
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerUnitDied", playerUnitDied);
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyUnitDied", enemyUnitDied);
     }
 
     private void OnDisable()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("PlayerFortressLost", playerLostFortress);
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyFortressLost", enemyLostFortress);
-        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerUnitDied", playerUnitDied);
-        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyUnitDied", enemyUnitDied);
     }
 
-    /// <summary>
-    /// The API to be used by ObserverSystem when a player unit died!
-    /// </summary>
-    protected void playerUnitDied()
-    {
-        --m_PlayerUnitsLeft;
-        if (m_PlayerUnitsLeft <= 0)
-        {
-            // If no more player units, do something!
-            m_lostDisplayGO.SetActive(true);
-        }
-    }
-
-    /// <summary>
-    /// The API to be used by ObserverSystem when an enemy unit died!
-    /// </summary>
-    protected void enemyUnitDied()
-    {
-        --m_EnemyUnitsLeft;
-        if (m_EnemyUnitsLeft <= 0)
-        {
-            // if no more enemy units, do something!
-            m_wonDisplayGO.SetActive(true);
-        }
-    }
 
     /// <summary>
     /// Display the losing screen and restart everything if necessary!
@@ -127,7 +97,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     protected void playerLostFortress()
     {
-        m_lostDisplayGO.SetActive(true);
+        playerLostDisplayAnimation();
     }
 
     /// <summary>
@@ -136,15 +106,24 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     protected void enemyLostFortress()
     {
+        playerWonDisplayAnimation();
+    }
+
+    /// <summary>
+    /// Display flashy effects if player won.
+    /// Hopefully got time to implement.
+    /// </summary>
+    public void playerWonDisplayAnimation()
+    {
         m_wonDisplayGO.SetActive(true);
     }
 
     /// <summary>
-    /// Another setter meant for Unity Inspector to call the function!
+    /// Display flashy effects if player lost.
+    /// Hopefully got time to implement.
     /// </summary>
-    /// <param name="playerTurn">The flag to set whose turn to move!</param>
-    public void SetTurnToMove(bool playerTurn)
+    public void playerLostDisplayAnimation()
     {
-
+        m_lostDisplayGO.SetActive(true);
     }
 }

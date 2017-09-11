@@ -79,5 +79,7 @@ public class EnemyAIManager : MonoBehaviour {
                 break;
             }
         }
+        if (m_enemyGOList.Count <= 0)
+            GameManager.Instance.playerWonDisplayAnimation();
     }
 }

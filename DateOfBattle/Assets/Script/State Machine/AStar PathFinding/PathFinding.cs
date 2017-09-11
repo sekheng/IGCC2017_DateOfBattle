@@ -36,7 +36,7 @@ public class PathFinding : MonoBehaviour {
         bool isSuccessFind = false;
         Node startNode = m_grid.NodeFromWorldPt(startPos);
         Node endNode = m_grid.NodeFromWorldPt(endPos);
-        if (startNode.walkable && endNode.walkable)
+        //if (startNode.walkable && endNode.walkable)
         {
 #if OPTIMIZE_HEAP
             Heap<Node> openset = new Heap<Node>(m_grid.maxSize);
@@ -75,7 +75,8 @@ public class PathFinding : MonoBehaviour {
 
                 foreach (Node node in m_grid.GetNeighbours(currentNode))
                 {
-                    if (!node.walkable || closedSet.Contains(node))
+                    // Changed the code here to check whether it is not referring to starting and end node otherwise it will not be suitable for the current project.
+                    if ((!node.walkable && node != startNode && node != endNode) || closedSet.Contains(node))
                         continue;
                     int newMovementCost = currentNode.g_cost + GetDistance(currentNode, node);
                     if (newMovementCost < node.g_cost || !openset.Contains(node))

@@ -19,19 +19,28 @@ public class ObserverSystemScript : MonoBehaviour {
 
     public static ObserverSystemScript Instance
     {
-        get;
-        private set;
+        get
+        {
+            if (instance == null)
+            {
+                // If it is yet to be awaken, awake it!
+                FindObjectOfType<ObserverSystemScript>().Awake();
+            }
+            return instance;
+        }
     }
+    // The variable to store it!
+    private static ObserverSystemScript instance;
 
     void Awake()
     {
         // Making sure there is only 1 instance of this script!
-        if (Instance != null)
+        if (instance != null && instance != this)
             Destroy(this);
         else
         {
             DontDestroyOnLoad(this);
-            Instance = this;
+            instance = this;
         }
     }
 
