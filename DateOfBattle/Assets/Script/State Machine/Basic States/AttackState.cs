@@ -10,8 +10,8 @@ public class AttackState : GenericState{
     [Tooltip("To get the character stats. Linking is not required.")]
     public CharacterScript charStats;
     [Header("The debugging and linking values")]
-    [Tooltip("The Tile to attack towards to")]
-    public TileScript targetToTile;
+    [Tooltip("The chara to attack towards to")]
+    public CharacterScript targetChara;
     // Use this for initialization
     protected virtual void Start () {
 
@@ -24,18 +24,18 @@ public class AttackState : GenericState{
     public override IEnumerator updateState()
     {
 
-        if (!targetToTile)
+        if (!targetChara)
             yield break;
 
         int m_Range = charStats.m_Range;
         bool isOnRange = false;
-        isOnRange = m_Range >  Vector3.Distance(transform.position, targetToTile.transform.position);
+        isOnRange = m_Range >  Vector3.Distance(transform.position, targetChara.myTile.transform.position);
 
         if (isOnRange)
         {
             //
-            charStats.Damage(charStats.m_AttackDamage, charStats.m_AttackType);
-            charStats.Attack();
+            
+            charStats.Attack(targetChara);
 
             if(charStats.IsDead())
             {
@@ -68,9 +68,9 @@ public class AttackState : GenericState{
     /// <returns>return true if casting is successful</returns>
     public override bool interactWithState(object argument)
     {
-        targetToTile = argument as TileScript;
+        targetChara = argument as CharacterScript;
         // If the object is there, then the casting is successful so return true
-        if (targetToTile)
+        if (targetChara)
         {
             return true;
         }
