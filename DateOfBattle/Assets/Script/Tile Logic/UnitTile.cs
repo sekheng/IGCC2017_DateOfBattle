@@ -38,6 +38,10 @@ public class UnitTile : TileScript
     /// </summary>
     private void OnDestroy()
     {
+        // Need to report back to Grid.cs that the current node that the unit is occupying has been destroyed!
+        Grid.Instance.NodeFromWorldPt(transform.position).walkable = true;
+        // Trigger the event at ObserverSystem
+        ObserverSystemScript.Instance.storeVariableInEvent(tag + "UnitDied", gameObject);
         // The tag will be doing it for us to check whether is it the player or enemy unit!
         ObserverSystemScript.Instance.TriggerEvent(tag + "UnitDied");
     }

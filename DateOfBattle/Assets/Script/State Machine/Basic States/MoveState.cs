@@ -35,6 +35,9 @@ public class MoveState : GenericState {
     /// To update the movement to this point! 
     /// </summary>
 	public override IEnumerator updateState() {
+        int m_MoveCountDown = charStats.m_leftOverMoveSpeed;
+        if (m_MoveCountDown == 0)
+            yield break;
         if (moveToTile)
         // Request the movement from PathRequestManager
             PathRequestManager.RequestPath(transform.position, moveToTile.transform.position, OnPathFound);
@@ -45,7 +48,7 @@ public class MoveState : GenericState {
         // Wait till it has find the path!
         while (!hasFinishedPath)
             yield return null;
-        int m_MoveCountDown = charStats.m_MoveSpeed, currentMoveIndex = 0;
+        int currentMoveIndex = 0;
         m_originalPos = transform.position;
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
@@ -62,7 +65,7 @@ public class MoveState : GenericState {
             }
             yield return null;
         }
-        reportToGridNewPos();
+        charStats.m_leftOverMoveSpeed = m_MoveCountDown;
         yield break;
 	}
 

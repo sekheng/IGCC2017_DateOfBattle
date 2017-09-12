@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This will handle the entire game flow.
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour {
     public GameObject m_lostDisplayGO;
     [Tooltip("Need to stop the player input in order to prevent bugs!")]
     public PlayerBattleMouse m_playerMouseInput;
+    [Tooltip("Display who turn is it screen")]
+    public Text displayTurnText;
 
     [Header("Debugging References and they will be automatically linked inside codes. Do not touch!")]
     [SerializeField,Tooltip("The flag to show whose turn is it!")]
@@ -33,11 +36,13 @@ public class GameManager : MonoBehaviour {
             switch(m_isItPlayerTurn)
             {
                 case false:
+                    displayTurnText.text = "Enemy turn";
                     EnemyAIManager.Instance.StartCoroutine(EnemyAIManager.Instance.updateOwnUnits());
                     // Disable the inputs!
                     m_playerMouseInput.enabled = false;
                     break;
                 default:
+                    displayTurnText.text = "Player turn";
                     // Enable the inputs!
                     m_playerMouseInput.enabled = true;
                     PlayerManager.Instance.StartCoroutine(PlayerManager.Instance.updateOwnUnits());
@@ -116,6 +121,10 @@ public class GameManager : MonoBehaviour {
     public void playerWonDisplayAnimation()
     {
         m_wonDisplayGO.SetActive(true);
+        // Need to ensure that the mouse input from the player is disabled to prevent further bugs
+        m_playerMouseInput.enabled = false;
+        // Trigger game over event since it is over!
+        ObserverSystemScript.Instance.TriggerEvent("GameOver");
     }
 
     /// <summary>
@@ -125,5 +134,9 @@ public class GameManager : MonoBehaviour {
     public void playerLostDisplayAnimation()
     {
         m_lostDisplayGO.SetActive(true);
+        // Need to ensure that the mouse input from the player is disabled to prevent further bugs
+        m_playerMouseInput.enabled = false;
+        // Trigger game over event since it is over!
+        ObserverSystemScript.Instance.TriggerEvent("GameOver");
     }
 }

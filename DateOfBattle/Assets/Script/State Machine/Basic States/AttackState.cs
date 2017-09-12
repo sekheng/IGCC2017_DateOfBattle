@@ -29,7 +29,7 @@ public class AttackState : GenericState{
 
         int m_Range = charStats.m_Range;
         bool isOnRange = false;
-        isOnRange = m_Range >  Vector3.Distance(transform.position, targetChara.myTile.transform.position);
+        isOnRange = m_Range >  Vector3.Distance(transform.position, targetChara.transform.position);
 
         if (isOnRange)
         {
@@ -37,11 +37,11 @@ public class AttackState : GenericState{
             
             charStats.Attack(targetChara);
 
-            if(charStats.IsDead())
+            if(targetChara.IsDead())
             {
                 //Debug.Log("it is die.");
                 //TODO: for now, Destroy the game object of the Unit until there is a particle effect system to enhance the graphics
-                Destroy(charStats.gameObject);
+                Destroy(targetChara.gameObject);
             }
         }
         else

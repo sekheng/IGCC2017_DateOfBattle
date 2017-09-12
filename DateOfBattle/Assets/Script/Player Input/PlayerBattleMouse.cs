@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// To be used at selection of unit during battle.
@@ -63,9 +65,13 @@ public class PlayerBattleMouse : MonoBehaviour {
             playerMouseLastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Use overlap point since there is no raycast2D from MouseWorld Coordinate to collider
             RaycastHit2D hit2D = Physics2D.Linecast(playerMouseLastClickedPos, playerMouseLastClickedPos);
-            if (!hit2D)
+            if (hit2D)
             {
                 playerClickedTile = hit2D.collider.GetComponent<TileScript>();
+            }
+            else
+            {
+                ObserverSystemScript.Instance.TriggerEvent("PlayerClickedOnEmpty");
             }
         }
     }

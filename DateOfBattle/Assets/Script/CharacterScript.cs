@@ -108,11 +108,24 @@ public class CharacterScript : MonoBehaviour {
     {
         set
         {
-            moveSpeed = value;
+            moveSpeed = Mathf.Max(0, value);
         }
         get
         {
             return moveSpeed;
+        }
+    }
+    [SerializeField, Tooltip("The unit leftover move speed. It will be set to the move speed variable at the start so there is no need to set the value at the editor")]
+    protected int leftOverMoveSpeed;
+    public int m_leftOverMoveSpeed
+    {
+        set
+        {
+            leftOverMoveSpeed = Mathf.Max(0, value);
+        }
+        get
+        {
+            return leftOverMoveSpeed;
         }
     }
 
@@ -181,8 +194,9 @@ public class CharacterScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_Morale = DEFAULT_MORALE;
+        m_leftOverMoveSpeed = m_MoveSpeed;
     }
-	
+
     void Action()
     {
     }
@@ -281,5 +295,10 @@ public class CharacterScript : MonoBehaviour {
     public bool IsDead()
     {
         return m_Hp <= 0;
+    }
+
+    public void resetMoveSpeed()
+    {
+        m_leftOverMoveSpeed = m_MoveSpeed;
     }
 }

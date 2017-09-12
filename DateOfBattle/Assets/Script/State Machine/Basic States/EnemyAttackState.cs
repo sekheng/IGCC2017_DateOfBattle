@@ -9,9 +9,9 @@ public class EnemyAttackState : AttackState {
         if (charStats.m_Range >= Vector3.Distance(transform.position, targetChara.transform.position))
         {
             charStats.Attack(targetChara);
-            if (charStats.IsDead())
+            if (targetChara.IsDead())
             {
-                Destroy(charStats.gameObject);
+                Destroy(targetChara.gameObject);
                 // Tell the move state that we have defeated the unit!
                 m_FSMOwner.GetGenericState("MoveState").interactWithState("DEFEAT_UNIT");
             }
@@ -25,5 +25,14 @@ public class EnemyAttackState : AttackState {
             m_FSMOwner.ChangeCurrentState("MoveState");
         }
         yield break;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        if (charStats)
+        {
+            Gizmos.DrawWireSphere(transform.position, charStats.m_Range);
+        }
     }
 }

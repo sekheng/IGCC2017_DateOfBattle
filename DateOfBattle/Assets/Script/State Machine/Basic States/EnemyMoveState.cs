@@ -27,6 +27,7 @@ public class EnemyMoveState : MoveState {
         if (isItAttacking)
         {
             m_FSMOwner.ChangeCurrentState("AttackState");
+            yield break;
         }
 
         if (moveToTile)
@@ -53,6 +54,7 @@ public class EnemyMoveState : MoveState {
                 CharacterScript nearbyUnit = checkForUnitsInRange();
                 if (nearbyUnit)
                 {
+                    isItAttacking = true;
                     m_FSMOwner.GetGenericState("AttackState").interactWithState(nearbyUnit);
                     m_FSMOwner.ChangeCurrentState("AttackState");
                     // Need to tell the Grid about the newly occupied grid!
