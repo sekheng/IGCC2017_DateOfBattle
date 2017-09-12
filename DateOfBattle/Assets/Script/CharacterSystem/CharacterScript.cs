@@ -18,6 +18,8 @@ public class CharacterScript : MonoBehaviour {
     protected const int MAXIMUM_PERSONALTY = 100;
 
     public TileScript myTile;
+    public DamageTextControl damageText;
+    public PerticleExplosion damageEffect;
 
     [SerializeField, Tooltip("The unit max health")]
     protected int maximumHp;
@@ -249,7 +251,10 @@ public class CharacterScript : MonoBehaviour {
                 //HEAL
                 break;
         }
-//        Debug.Log((int)(damage * damageRateMorale));
+
+        damageText.PrintDamageValue((int)(damage * damageRate), this.gameObject);
+        damageEffect.Explosion(this.gameObject.transform.position);
+        //        Debug.Log((int)(damage * damageRateMorale));
         m_Hp -= (int)(damage * damageRate);
         // If there is a healthbar gameobject! because some scenes need testing.
         if (m_healthBar)
