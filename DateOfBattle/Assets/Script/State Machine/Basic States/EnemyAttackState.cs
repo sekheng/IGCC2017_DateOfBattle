@@ -6,7 +6,7 @@ public class EnemyAttackState : AttackState {
     public override IEnumerator updateState()
     {
         // If the unit is in range, then attack!
-        if (charStats.m_Range >= Vector3.Distance(transform.position, targetChara.transform.position))
+        if (targetChara && charStats.m_Range >= Vector3.Distance(transform.position, targetChara.transform.position))
         {
             charStats.Attack(targetChara);
             if (targetChara.IsDead())

@@ -265,9 +265,10 @@ public class CharacterScript : MonoBehaviour {
                 //HEAL
                 break;
         }
-
-        damageText.PrintDamageValue((int)(damage * damageRate), this.gameObject);
-        damageEffect.Explosion(this.gameObject.transform.position);
+        if (damageText)
+            damageText.PrintDamageValue((int)(damage * damageRate), this.gameObject);
+        if (damageEffect)
+            damageEffect.Explosion(this.gameObject.transform.position);
         //        Debug.Log((int)(damage * damageRateMorale));
         m_Hp -= (int)(damage * damageRate);
         // If there is a healthbar gameobject! because some scenes need testing.

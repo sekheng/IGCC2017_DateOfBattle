@@ -23,6 +23,11 @@ public class EnemyMoveState : MoveState {
 
     public override IEnumerator updateState()
     {
+        // If the Enemy AI is not controlling it, dont update it!
+        if (!EnemyAIManager.Instance.enabled)
+            yield break;
+        // Move the camera to this unit transform
+        CameraMovement.Instance.MoveTowardsPosition(transform.position);
         // if it is attacking to begin with, then change to attack state
         if (isItAttacking)
         {
@@ -43,6 +48,8 @@ public class EnemyMoveState : MoveState {
         int m_MoveCountDown = charStats.m_MoveSpeed, currentMoveIndex = 0;
         // Dont forget to include the original position
         m_originalPos = transform.position;
+        // Then tell the camera to follow this unit!
+        CameraMovement.Instance.StartFollowingTransfrom(transform);
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -64,6 +71,7 @@ public class EnemyMoveState : MoveState {
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, m_wayptToFollow[currentMoveIndex], m_animMoveSpeed);
+                //LeanTween.move(gameObject, m_wayptToFollow[currentMoveIndex], m_animMoveSpeed);
             }
             yield return null;
         }

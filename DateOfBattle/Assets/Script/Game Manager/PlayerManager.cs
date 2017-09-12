@@ -18,6 +18,9 @@ public class PlayerManager : MonoBehaviour {
     public List<GameObject> m_playerNotInteractGOList;
     [SerializeField, Tooltip("The flag to check whether the player has clicked on emptiness")]
     protected bool m_clickedFlag = false;
+    [SerializeField, Tooltip("The last player unit that has taken action!")]
+    protected TileScript m_lastActionUnitTile;
+
     /// <summary>
     /// So as to ensure it will jump out of the loop at the update of the unit's action!
     /// </summary>
@@ -59,13 +62,24 @@ public class PlayerManager : MonoBehaviour {
     {
         // Clone the list!
         m_playerNotInteractGOList = new List<GameObject>(m_playerGOList);
+        yield return new WaitForSeconds(1.0f);
+        // If there is a previous unit, move the camera towards there!
+        if (m_lastActionUnitTile)
+            CameraMovement.Instance.MoveTowardsPosition(m_lastActionUnitTile.transform.position);
+        else
+        {
+            // Randomly move the camera to any of the objects!
+            CameraMovement.Instance.MoveTowardsPosition(m_playerGOList[0].transform.position);
+        }
         while (m_playerNotInteractGOList.Count > 0)
         {
+            CameraMovement.Instance.BeginCamFreeMovement();
             // Will wait every frame for the player to click on the tile which belongs to the player! Also making sure that the player has not interact with the tile before!
             while (playerMouseInput.playerClickedTile == null || playerMouseInput.playerClickedTile.tag != "Player" || (!m_playerNotInteractGOList.Contains(playerMouseInput.playerClickedTile.gameObject) && playerMouseInput.playerClickedTile.tag == "Player"))
             {
                 yield return null;
             }
+            CameraMovement.Instance.StopCamUpdateMovement();
             TileScript firstTileClicked = playerMouseInput.playerClickedTile;
             // Set it to null and prevent player from pressing!
             playerMouseInput.playerClickedTile = null;
@@ -87,7 +101,8 @@ public class PlayerManager : MonoBehaviour {
             m_clickedFlag = false;
 #region UNIT_ACTION
             while (m_endPlayerTurnScreen.activeSelf)
-            { 
+            {
+                CameraMovement.Instance.BeginCamFreeMovement();
                 // Wait for PlayerBattleMouse to send the event trigger!
                 while (!m_clickedFlag && m_endPlayerTurnScreen.activeSelf)
                 {
@@ -124,6 +139,7 @@ public class PlayerManager : MonoBehaviour {
                     // Reset the tile!
                     playerMouseInput.playerClickedTile = null;
                 }
+                CameraMovement.Instance.StopCamUpdateMovement();
                 m_clickedFlag = false;
                 yield return null;
             }
@@ -133,7 +149,9 @@ public class PlayerManager : MonoBehaviour {
             playerUnitStat.resetMoveSpeed();
             // Removed the already interacted gameobject!
             m_playerNotInteractGOList.Remove(firstTileClicked.gameObject);
+            m_lastActionUnitTile = firstTileClicked;
         }
+        CameraMovement.Instance.StopCamUpdateMovement();
         // Set it to be false!
         GameManager.Instance.isItPlayerTurn = false;
         yield break;
@@ -143,14 +161,13 @@ public class PlayerManager : MonoBehaviour {
     {
         ObserverSystemScript.Instance.SubscribeEvent("PlayerUnitDied", playerManagerUnitDied);
         ObserverSystemScript.Instance.SubscribeEvent("PlayerClickedOnEmpty", playerMouseBattleClickedEmpty);
-        ObserverSystemScript.Instance.SubscribeEvent("GameOver", stopUpdateCoroutine);
     }
 
     private void OnDisable()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("PlayerUnitDied", playerManagerUnitDied);
         ObserverSystemScript.Instance.UnsubscribeEvent("PlayerClickedOnEmpty", playerMouseBattleClickedEmpty);
-        ObserverSystemScript.Instance.UnsubscribeEvent("GameOver", stopUpdateCoroutine);
+        StopCoroutine("updateOwnUnits");
     }
 
     /// <summary>
@@ -170,14 +187,5 @@ public class PlayerManager : MonoBehaviour {
     protected void playerMouseBattleClickedEmpty()
     {
         m_clickedFlag = true;
-    }
-
-    /// <summary>
-    /// Stopped the current coroutine update so as to prevent bugs!
-    /// </summary>
-    protected void stopUpdateCoroutine()
-    {
-        // Stop own update coroutine unless someone messed it up by starting the coroutine in other scripts!
-        StopCoroutine("updateOwnUnits");
     }
 }

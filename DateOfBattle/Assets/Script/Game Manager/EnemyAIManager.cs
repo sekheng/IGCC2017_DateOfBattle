@@ -66,13 +66,12 @@ public class EnemyAIManager : MonoBehaviour {
     private void OnEnable()
     {
         ObserverSystemScript.Instance.SubscribeEvent("EnemyUnitDied", enemyManagerUnitDied);
-        ObserverSystemScript.Instance.SubscribeEvent("GameOver", stopUpdating);
     }
 
     private void OnDisable()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyUnitDied", enemyManagerUnitDied);
-        ObserverSystemScript.Instance.UnsubscribeEvent("GameOver", stopUpdating);
+        StopCoroutine("updateOwnUnits");
     }
 
     /// <summary>
@@ -84,14 +83,5 @@ public class EnemyAIManager : MonoBehaviour {
         ObserverSystemScript.Instance.removeTheEventVariableNextFrame("EnemyUnitDied");
         if (m_enemyGOList.Count <= 0)
             GameManager.Instance.playerWonDisplayAnimation();
-    }
-
-    /// <summary>
-    /// To completely stop the updating of this manager when everything is over!
-    /// </summary>
-    protected void stopUpdating()
-    {
-        // Stop own update coroutine unless someone messed it up by starting the coroutine in other scripts!
-        StopCoroutine("updateOwnUnits");
     }
 }

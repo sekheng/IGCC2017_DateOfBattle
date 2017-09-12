@@ -35,6 +35,7 @@ public class MoveState : GenericState {
     /// To update the movement to this point! 
     /// </summary>
 	public override IEnumerator updateState() {
+        CameraMovement.Instance.MoveTowardsPosition(transform.position);
         int m_MoveCountDown = charStats.m_leftOverMoveSpeed;
         if (m_MoveCountDown == 0)
             yield break;
@@ -50,6 +51,7 @@ public class MoveState : GenericState {
             yield return null;
         int currentMoveIndex = 0;
         m_originalPos = transform.position;
+        CameraMovement.Instance.StartFollowingTransfrom(transform);
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -66,6 +68,7 @@ public class MoveState : GenericState {
             yield return null;
         }
         charStats.m_leftOverMoveSpeed = m_MoveCountDown;
+        CameraMovement.Instance.StopCamUpdateMovement();
         yield break;
 	}
 

@@ -137,6 +137,8 @@ public class GameManager : MonoBehaviour {
         // Need to ensure that the mouse input from the player is disabled to prevent further bugs
         m_playerMouseInput.enabled = false;
         // Trigger game over event since it is over!
-        ObserverSystemScript.Instance.TriggerEvent("GameOver");
+        //ObserverSystemScript.Instance.TriggerEvent("GameOver");
+        PlayerManager.Instance.enabled = false;
+        EnemyAIManager.Instance.enabled = false;
     }
 }

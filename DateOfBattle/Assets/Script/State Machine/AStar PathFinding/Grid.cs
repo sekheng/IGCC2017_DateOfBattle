@@ -7,6 +7,8 @@ public class Grid : MonoBehaviour {
     public Vector2 gridWorldSize;
     Node[,] grid;
     public float nodeRadius = 0.5f;
+    [Tooltip("Offset of node radius")]
+    public float offsetNodeRadius = 0.2f;
     public Transform selectUnitTransform;
 
     float nodeDiameter;
@@ -52,7 +54,7 @@ public class Grid : MonoBehaviour {
             {
                 Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 // Have to minus 0.1f otherwise it will occupy more than 1 cube!
-                bool walkable = !Physics2D.OverlapCircle(worldPt, nodeRadius - 0.1f, unwalkableMask);
+                bool walkable = !Physics2D.OverlapCircle(worldPt, nodeRadius - offsetNodeRadius, unwalkableMask);
                 grid[x, y] = new Node(walkable, worldPt, x, y);
             }
         }
