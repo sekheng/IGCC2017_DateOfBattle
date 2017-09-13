@@ -12,12 +12,15 @@ public class AnimScript : MonoBehaviour {
     protected int m_walkingDirection = 0;
     [SerializeField, Tooltip("To check whether is it curently walking or not")]
     protected bool m_isItWalking = false;
+    [SerializeField, Tooltip("To check whether is it attacking or not")]
+    protected bool m_isItAttacking = false;
     [SerializeField, Tooltip("The animator of the unit. Linking is already done in codes!")]
     protected Animator m_AnimController;
 
     // To set the animation parameter
     public const string animParamIntDirectionName = "direction";
     public const string animParambWalkingName = "isWalk";
+    public const string animParambAttackName = "isAttacking";
 
     // Use this for initialization
     void Start () {
@@ -47,6 +50,19 @@ public class AnimScript : MonoBehaviour {
         {
             m_isItWalking = isWalking;
             m_AnimController.SetBool(animParambWalkingName, isWalking);
+        }
+    }
+
+    /// <summary>
+    /// The function to set the attacking animation!
+    /// </summary>
+    /// <param name="isAttacking">Setting it true will result in doing the attacking animation!</param>
+    public void setAttacking(bool isAttacking)
+    {
+        if (m_isItAttacking != isAttacking)
+        {
+            m_isItAttacking = isAttacking;
+            m_AnimController.SetBool(animParambAttackName, isAttacking);
         }
     }
 }

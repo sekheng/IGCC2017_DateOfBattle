@@ -76,7 +76,6 @@ public class MoveState : GenericState {
         }
         charStats.m_leftOverMoveSpeed = m_MoveCountDown;
         CameraMovement.Instance.StopCamUpdateMovement();
-        m_FSMOwner.m_animScript.setWalking();
         yield break;
 	}
 
@@ -100,6 +99,7 @@ public class MoveState : GenericState {
         moveToTile = null;
         hasFinishedPath = false;
         reportToGridNewPos();
+        m_FSMOwner.m_animScript.setWalking();
     }
 
     public override void resetState()
