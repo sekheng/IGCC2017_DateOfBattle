@@ -50,7 +50,7 @@ public class DialogueManager : MonoBehaviour {
         UpdateUI();
 
         //  最後の行まで行ったら終了
-        if(m_lineName==7)
+        if(m_lineName==8)
         {
             m_endLine = true;
           //  Debug.Log("End Line");
