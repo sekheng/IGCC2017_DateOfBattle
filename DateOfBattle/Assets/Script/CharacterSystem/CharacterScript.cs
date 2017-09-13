@@ -197,10 +197,16 @@ public class CharacterScript : MonoBehaviour {
     void Start () {
         m_Morale = DEFAULT_MORALE;
         m_leftOverMoveSpeed = m_MoveSpeed;
-    }
-
-    void Action()
-    {
+        if (!damageEffect)
+        {
+            // If linking does not occur, find the tag!
+            damageEffect = GameObject.FindGameObjectWithTag("ExplodeParticle").GetComponent<PerticleExplosion>();
+        }
+        if (!damageText)
+        {
+            // If linking does not occur, find the tag!
+            damageText = GameObject.FindGameObjectWithTag("DamageText").GetComponent<DamageTextControl>();
+        }
     }
 
     public void Attack(CharacterScript targetChara)

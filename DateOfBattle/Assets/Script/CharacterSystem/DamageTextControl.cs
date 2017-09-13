@@ -21,7 +21,9 @@ public class DamageTextControl : MonoBehaviour {
     {
         this.gameObject.transform.position = parent.transform.position;
         text.text = (damage.ToString());
-        animator.SetTrigger("Damage");
+        // Just play the animation state name, at Base Layer, Starting from 0!
+        animator.Play("Hopping", 0, 0);
+        //animator.SetTrigger("Damage");
         // animation.Play();
     }
 }

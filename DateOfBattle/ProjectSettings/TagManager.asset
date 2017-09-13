@@ -8,6 +8,8 @@ TagManager:
   - Unwalkable
   - EnemyFortress
   - PlayerFortress
+  - ExplodeParticle
+  - DamageText
   layers:
   - Default
   - TransparentFX
