@@ -123,8 +123,10 @@ public class GameManager : MonoBehaviour {
         m_dialogueFlowchart.SendFungusMessage("WIN");
         // Need to ensure that the mouse input from the player is disabled to prevent further bugs
         m_playerMouseInput.enabled = false;
+        PlayerManager.Instance.enabled = false;
+        EnemyAIManager.Instance.enabled = false;
         // Trigger game over event since it is over!
-        ObserverSystemScript.Instance.TriggerEvent("GameOver");
+        //ObserverSystemScript.Instance.TriggerEvent("GameOver");
     }
 
     /// <summary>

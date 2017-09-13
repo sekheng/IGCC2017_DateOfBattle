@@ -11,6 +11,12 @@ public class EnemyMoveState : MoveState {
     public GameObject playerFortressTile;
     [Tooltip("Has begin attacked. To keep track whether is it attacking or not!")]
     public bool isItAttacking = false;
+    [Tooltip("How many seconds to wait if A* search algorithm does not respond!")]
+    public float m_HowManySecond = 1.0f;
+
+    [Header("The debugging references for enemy movestate")]
+    [SerializeField, Tooltip("The Time counter")]
+    protected float m_timeCounter = 0;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -34,6 +40,17 @@ public class EnemyMoveState : MoveState {
             m_FSMOwner.ChangeCurrentState("AttackState");
             yield break;
         }
+        // Check for nearby enemy 1st!
+        CharacterScript nearbyUnit = checkForUnitsInRange();
+        if (nearbyUnit)
+        {
+            isItAttacking = true;
+            m_FSMOwner.GetGenericState("AttackState").interactWithState(nearbyUnit);
+            m_FSMOwner.ChangeCurrentState("AttackState");
+            // Need to tell the Grid about the newly occupied grid!
+            yield break;
+        }
+
 
         if (moveToTile)
             // Request the movement from PathRequestManager
@@ -44,7 +61,12 @@ public class EnemyMoveState : MoveState {
         }
         // Wait till it has find the path!
         while (!hasFinishedPath)
+        {
+            m_timeCounter += Time.deltaTime;
+            if (m_timeCounter > m_HowManySecond)
+                yield break;
             yield return null;
+        }
         int m_MoveCountDown = charStats.m_MoveSpeed, currentMoveIndex = 0;
         // Dont forget to include the original position
         m_originalPos = transform.position;
@@ -134,5 +156,6 @@ public class EnemyMoveState : MoveState {
     {
         base.resetState();
         m_FSMOwner.m_animScript.setWalking(false);
+        m_timeCounter = 0;
     }
 }
