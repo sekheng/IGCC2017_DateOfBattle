@@ -8,10 +8,7 @@ public class AudioManager : MonoBehaviour {
     public AudioSource bgmSource;
     public AudioClip[] se;
     public AudioClip[] bgm;
-    // Use this for initialization
-    void Start () {
 
-    }
     public bool PlayMusic(int clipNum)
     {
         if(clipNum > bgm.Length)
@@ -36,33 +33,43 @@ public class AudioManager : MonoBehaviour {
     {
         set
         {
-            bgmSource.loop = value;
+            // If the BGM exists, then you set!
+            if (bgmSource)
+                bgmSource.loop = value;
         }
         get
         {
-            return bgmSource.loop;
+            if (bgmSource)
+                return bgmSource.loop;
+            return false;
         }
     }
     public float bgmVolume
     {
         set
         {
-            bgmSource.volume = value;
+            if (bgmSource)
+                bgmSource.volume = value;
         }
         get
         {
-            return bgmSource.volume;
+            if (bgmSource)
+                return bgmSource.volume;
+            return 0;
         }
     }
     public float seVolume
     {
         set
         {
-            seSource.volume = value;
+            if (seSource)
+                seSource.volume = value;
         }
         get
         {
-            return seSource.volume;
+            if (seSource)
+                return seSource.volume;
+            return 0;
         }
     }
 
