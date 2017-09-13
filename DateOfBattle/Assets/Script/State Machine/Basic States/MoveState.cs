@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class MoveState : GenericState {
     [Header("The value needed for move state")]
-    [Tooltip("The animating movement speed. Different from Character stat move speed.")]
+    [Tooltip("Different from Character stat move speed. This name is misleading as the lower the value, the slower it run so will investigate more on it if have time.")]
     public float m_animMoveSpeed = 0.3f;
 
     [Header("The debugging and linking values")]
@@ -52,6 +52,8 @@ public class MoveState : GenericState {
         int currentMoveIndex = 0;
         m_originalPos = transform.position;
         CameraMovement.Instance.StartFollowingTransfrom(transform);
+        m_FSMOwner.m_animScript.setWalking(true);
+        doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -60,6 +62,11 @@ public class MoveState : GenericState {
             {
                 ++currentMoveIndex;
                 --m_MoveCountDown;
+                if (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
+                {
+                    // Doing it here so that the calculation for direction will only be called once!
+                    doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
+                }
             }
             else
             {
@@ -69,6 +76,7 @@ public class MoveState : GenericState {
         }
         charStats.m_leftOverMoveSpeed = m_MoveCountDown;
         CameraMovement.Instance.StopCamUpdateMovement();
+        m_FSMOwner.m_animScript.setWalking();
         yield break;
 	}
 
@@ -135,5 +143,41 @@ public class MoveState : GenericState {
         originalNode.walkable = true;
         Node newNode = Grid.Instance.NodeFromWorldPt(transform.position);
         newNode.walkable = false;
+    }
+
+    /// <summary>
+    /// The function that does the walking animation based on the direction!
+    /// </summary>
+    protected void doWalkingDirectionAnim(Vector3 otherPos)
+    {
+        Vector2 directionInWorldSpace2D = otherPos - transform.position;
+        // If it is not going up or down!
+        if (Mathf.Approximately(0, directionInWorldSpace2D.y))
+        {
+            // This means the unit is walking horizontally!
+            if (directionInWorldSpace2D.x > 0)
+            {
+                // Then the unit is going to right!
+                m_FSMOwner.m_animScript.setWalkDirection(3);
+            }
+            else
+            {
+                // The unit is going left
+                m_FSMOwner.m_animScript.setWalkDirection(2);
+            }
+        }
+        else
+        {
+            // The unit is walking vertically!
+            if (directionInWorldSpace2D.y > 0)
+            {
+                // The unit is walking up!
+                m_FSMOwner.m_animScript.setWalkDirection(0);
+            }
+            else
+            {
+                m_FSMOwner.m_animScript.setWalkDirection(1);
+            }
+        }
     }
 }

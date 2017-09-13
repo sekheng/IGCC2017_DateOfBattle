@@ -50,6 +50,8 @@ public class EnemyMoveState : MoveState {
         m_originalPos = transform.position;
         // Then tell the camera to follow this unit!
         CameraMovement.Instance.StartFollowingTransfrom(transform);
+        m_FSMOwner.m_animScript.setWalking(true);
+        doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -66,6 +68,11 @@ public class EnemyMoveState : MoveState {
                     m_FSMOwner.ChangeCurrentState("AttackState");
                     // Need to tell the Grid about the newly occupied grid!
                     yield break;
+                }
+                else if (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
+                {
+                    // Then keep moving!
+                    doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
                 }
             }
             else
@@ -126,5 +133,6 @@ public class EnemyMoveState : MoveState {
     public override void resetState()
     {
         base.resetState();
+        m_FSMOwner.m_animScript.setWalking(false);
     }
 }

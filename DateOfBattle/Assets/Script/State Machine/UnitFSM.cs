@@ -10,6 +10,11 @@ public class UnitFSM : MonoBehaviour {
     protected GenericState[] m_AllGenericStates;
     [Tooltip("The current state that this FSM is in!")]
     public GenericState currentState;
+
+    [Header("The Debugging References")]
+    [Tooltip("The animation script")]
+    public AnimScript m_animScript;
+
     // To keep track of the update state. You can only see it!
     public Coroutine updateStateCoroutine
     {
@@ -18,6 +23,7 @@ public class UnitFSM : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        m_animScript = GetComponent<AnimScript>();
         m_AllGenericStates = GetComponentsInChildren<GenericState>();
         // Then loop through all the state and make sure the states can recognise their owner
         foreach (GenericState state in m_AllGenericStates)
