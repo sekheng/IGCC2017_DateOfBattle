@@ -82,7 +82,7 @@ public class EnemyMoveState : MoveState {
             {
                 ++currentMoveIndex;
                 --m_MoveCountDown;
-                CharacterScript nearbyUnit = checkForUnitsInRange();
+                nearbyUnit = checkForUnitsInRange();
                 if (nearbyUnit)
                 {
                     isItAttacking = true;
