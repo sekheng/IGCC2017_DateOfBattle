@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Medic
+  m_Name: Sniper
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: direction
@@ -13,19 +13,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -741,7 +741,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicAttackLeft
+  m_Name: SniperAttackLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -754,7 +754,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 83178b9a7b936cd4c8f1b0f976c14016, type: 2}
+  m_Motion: {fileID: 7400000, guid: e8500ae622413f745ba603e46bb6b7fd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -765,7 +765,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicAttackRight
+  m_Name: SniperAttackRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -778,7 +778,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c8f2d8c3c4d3e4b479bda50cacf8089d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9154156deb21e0c47821ff74e64c6cf5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -789,7 +789,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicWalkingLeft
+  m_Name: SniperWalkingLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -805,7 +805,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f084d59922823744b847ae12424db8f0, type: 2}
+  m_Motion: {fileID: 7400000, guid: eca9a045a8d486343adf9256a46bd809, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -816,7 +816,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicWalkingUp
+  m_Name: SniperWalkingUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -832,7 +832,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5d0da29cfa5ee1248b93cb8d7743b9d8, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9ee74cc2fecc75c4789f76866d2d51a0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -874,7 +874,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicWalkingDown
+  m_Name: SniperWalkingDown
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -890,7 +890,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e0c4bd8f234fff544a84d5a3a3173dad, type: 2}
+  m_Motion: {fileID: 7400000, guid: 42919a53d495e6343a02b9fd53f82bc0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -901,7 +901,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicAttackDown
+  m_Name: SniperAttackDown
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -914,7 +914,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 094bd31b337fa6c489c9d97391b6be1b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 674ca82f869ffd940bd6e0321a43adab, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -925,7 +925,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicWalkingRight
+  m_Name: SniperWalkingRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -941,7 +941,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 395ebd16cb2f15d46a12a13384ea9bae, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6168b200a9739dc4782e91f1438317e9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -952,7 +952,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MedicAttackUp
+  m_Name: SniperAttackUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -965,7 +965,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8ea2f601604be4f42b825654129dfc6c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 695bb819934653f43a1b4b10c81957d5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
