@@ -7,14 +7,25 @@ public class DialogShow : MonoBehaviour {
     //  ダイアログのプレファブ
     public Canvas canvasDialogPrefab = null;
 
-	// Use this for initialization
-	void Start () {
-		
+    public bool endLine = false;
+
+    // Use this for initialization
+    void Start () {
+        endLine = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        endLine = GameObject.Find("Panel").GetComponent<DialogueManager>().IsEndLine();
+
+        //  会話が終了したら
+        if (endLine) 
+        {
+            Debug.Log("End Line");
+            //DestroyImmediate(canvasDialogPrefab,true);
+            DestroyImmediate(GameObject.Find("Image"));
+            DestroyImmediate(GameObject.Find("Panel"));
+        }
 	}
 
     //  ボタンが押された

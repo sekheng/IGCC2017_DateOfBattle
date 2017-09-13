@@ -24,6 +24,9 @@ public class DialogueManager : MonoBehaviour {
     public Text m_nemeBox;
     public GameObject m_choiceBox;
 
+    //  行の終了
+    public bool m_endLine;
+
 	// Use this for initialization
 	void Start () {
         //  初期化
@@ -34,6 +37,7 @@ public class DialogueManager : MonoBehaviour {
         m_playerTalking = false;
         m_parser = GameObject.Find("DialogueParser").GetComponent<DialogueParser>();
         m_lineName = 0;
+        m_endLine = false;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +48,13 @@ public class DialogueManager : MonoBehaviour {
             m_lineName++;
         }
         UpdateUI();
+
+        //  最後の行まで行ったら終了
+        if(m_lineName==7)
+        {
+            m_endLine = true;
+          //  Debug.Log("End Line");
+        }
 	}
 
     //  ダイアログの表示
@@ -103,20 +114,22 @@ public class DialogueManager : MonoBehaviour {
 
             //  キャラスプライトの取得
             SpriteRenderer currSprite = character.GetComponent<SpriteRenderer>();
-            //currSprite.sprite = character.GetComponent<Character>().characterPoses[m_pose];   //errorPoint
+            currSprite.sprite = character.GetComponent<Character>().characterPoses[m_pose];   //errorPoint
+            //currSprite.sprite = character.GetComponent<Character>().characterPoses[0];
+
         }
     }
 
-    //  スプライトの向きをセット
+    //  キャラスプライトの位置をセット
     void SetSpritePositions(GameObject spriteObj)
     {
         if (m_position == "L")
         {
-            spriteObj.transform.position = new Vector3(-6, 0);
+            spriteObj.transform.position = new Vector3(-7, 2);
         }
         else if (m_position == "R")
         {
-            spriteObj.transform.position = new Vector3(6, 0);
+            spriteObj.transform.position = new Vector3(7, 2);
         }
         spriteObj.transform.position = new Vector3(spriteObj.transform.position.x, spriteObj.transform.position.y, 0);
     }
@@ -133,8 +146,8 @@ public class DialogueManager : MonoBehaviour {
             cb.m_option = m_options[i].Split(':')[1];
             cb.m_box = this;
             b.transform.SetParent(this.transform);
-            b.transform.localPosition = new Vector3(0, -25 + (i * 50));
-            b.transform.localScale = new Vector3(1, 1, 1);
+            b.transform.localPosition = new Vector3(0, -75 + (i * 30));
+            b.transform.localScale = new Vector3(1.0f, 0.8f, 0.8f);
             m_buttons.Add(b);
         }
     }
@@ -160,6 +173,12 @@ public class DialogueManager : MonoBehaviour {
             m_buttons.Remove(b);
             Destroy(b.gameObject);
         }
+    }
+
+    //  最後の行に行ったかどうか
+    public bool IsEndLine()
+    {
+        return m_endLine;
     }
 
 }

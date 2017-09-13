@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPoses:
-  - {fileID: 21300000, guid: 9e5eefef3b3fdff40a66f9c9db42ac9e, type: 3}
   - {fileID: 21300000, guid: 93b2f40e970e7eb4cbee6cd846766f5f, type: 3}
+  - {fileID: 21300000, guid: c438947a01291e34db8ab2df540dc13a, type: 3}
 --- !u!212 &212460835288942062
 SpriteRenderer:
   m_ObjectHideFlags: 1
