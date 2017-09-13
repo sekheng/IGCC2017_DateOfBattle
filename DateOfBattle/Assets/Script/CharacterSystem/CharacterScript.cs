@@ -15,7 +15,7 @@ public class CharacterScript : MonoBehaviour {
 
     protected const int MAXIMUM_MORALE = 100;
     protected const int DEFAULT_MORALE = 50;
-    protected const int MAXIMUM_PERSONALTY = 100;
+    public const int MAXIMUM_PERSONALTY = 100;
 
     public TileScript myTile;
     public DamageTextControl damageText;
@@ -190,6 +190,19 @@ public class CharacterScript : MonoBehaviour {
         }
     }
     
+    public enum CHARACTER_CHARACTERISTIC
+    {
+        WARLIKE,
+        EMOTIONAL,
+        WARY,
+        TOTAL_CHARACTERISTIC,
+    };
+    [Tooltip("What kind of characteristics!")]
+    public CHARACTER_CHARACTERISTIC m_characterCharis;
+
+    [Tooltip("The sprite of the character")]
+    public Fungus.Character  charSprite;
+
     [Tooltip("Health bar")]
     public GameObject m_healthBar;
 
@@ -206,6 +219,18 @@ public class CharacterScript : MonoBehaviour {
         {
             // If linking does not occur, find the tag!
             damageText = GameObject.FindGameObjectWithTag("DamageText").GetComponent<DamageTextControl>();
+        }
+        if (m_Warlike > m_Emotional && m_Warlike > m_Wary)
+        {
+            m_characterCharis = CHARACTER_CHARACTERISTIC.WARLIKE;
+        }
+        else if (m_Emotional > m_Warlike && m_Emotional > m_Wary)
+        {
+            m_characterCharis = CHARACTER_CHARACTERISTIC.EMOTIONAL;
+        }
+        else if (m_Wary > m_Warlike && m_Wary > m_Emotional)
+        {
+            m_characterCharis = CHARACTER_CHARACTERISTIC.WARY;
         }
     }
 
@@ -288,6 +313,7 @@ public class CharacterScript : MonoBehaviour {
     //input: this action is dynamic?(0-100)
     void MoraleFluctuate(int battle, int communicate, int dynamic)
     {
+        // I dont understand what are these stuff. from AhHeng
         int moraleIncrement = 0;
         battle = Mathf.Clamp(battle, 0, MAXIMUM_PERSONALTY);
         communicate = Mathf.Clamp(communicate, 0, MAXIMUM_PERSONALTY);

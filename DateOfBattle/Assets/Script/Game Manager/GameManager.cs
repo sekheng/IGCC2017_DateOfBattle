@@ -9,16 +9,12 @@ using UnityEngine.UI;
 /// </summary>
 public class GameManager : MonoBehaviour {
     [Header("The References to call and link in Unity!")]
-    [Tooltip("The gameobject of the screen that display the intro!")]
-    public GameObject m_introDisplayGO;
-    [Tooltip("The gameobject of the screen that display player won!")]
-    public GameObject m_wonDisplayGO;
-    [Tooltip("The gameobject of the screen that display player lost!")]
-    public GameObject m_lostDisplayGO;
     [Tooltip("Need to stop the player input in order to prevent bugs!")]
     public PlayerBattleMouse m_playerMouseInput;
     [Tooltip("Display who turn is it screen")]
     public Text displayTurnText;
+    [Tooltip("The Flowchart to call")]
+    public Fungus.Flowchart m_dialogueFlowchart;
 
     [Header("Debugging References and they will be automatically linked inside codes. Do not touch!")]
     [SerializeField,Tooltip("The flag to show whose turn is it!")]
@@ -36,13 +32,15 @@ public class GameManager : MonoBehaviour {
             switch(m_isItPlayerTurn)
             {
                 case false:
-                    displayTurnText.text = "Enemy turn";
+                    if (displayTurnText)
+                        displayTurnText.text = "Enemy turn";
                     EnemyAIManager.Instance.StartCoroutine(EnemyAIManager.Instance.updateOwnUnits());
                     // Disable the inputs!
                     m_playerMouseInput.enabled = false;
                     break;
                 default:
-                    displayTurnText.text = "Player turn";
+                    if (displayTurnText)
+                        displayTurnText.text = "Player turn";
                     // Enable the inputs!
                     m_playerMouseInput.enabled = true;
                     PlayerManager.Instance.StartCoroutine(PlayerManager.Instance.updateOwnUnits());
@@ -80,7 +78,9 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Since the intro will play, just set it to be active regardless what!
-        m_introDisplayGO.SetActive(true);
+        //m_introDisplayGO.SetActive(true);
+        if (!m_dialogueFlowchart)
+            m_dialogueFlowchart = FindObjectOfType<Fungus.Flowchart>();
     }
 
     private void OnEnable()
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void playerWonDisplayAnimation()
     {
-        m_wonDisplayGO.SetActive(true);
+        m_dialogueFlowchart.SendFungusMessage("WIN");
         // Need to ensure that the mouse input from the player is disabled to prevent further bugs
         m_playerMouseInput.enabled = false;
         // Trigger game over event since it is over!
@@ -133,12 +133,21 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void playerLostDisplayAnimation()
     {
-        m_lostDisplayGO.SetActive(true);
+        m_dialogueFlowchart.SendFungusMessage("LOSE");
         // Need to ensure that the mouse input from the player is disabled to prevent further bugs
         m_playerMouseInput.enabled = false;
         // Trigger game over event since it is over!
         //ObserverSystemScript.Instance.TriggerEvent("GameOver");
         PlayerManager.Instance.enabled = false;
         EnemyAIManager.Instance.enabled = false;
+    }
+
+    /// <summary>
+    /// A simple function to be called when beginning the battle!
+    /// </summary>
+    void BeginBattle()
+    {
+        // Have to hardcode this part as there is no time to do other parts.
+        isItPlayerTurn = false;
     }
 }

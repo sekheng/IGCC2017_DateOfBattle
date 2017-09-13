@@ -36,4 +36,38 @@ public class DemoralizeState : GenericState {
     {
         
     }
+
+    public override bool interactWithState(object argument)
+    {
+        // No time to do complicated stuff
+        if (charStat.m_characterCharis == (CharacterScript.CHARACTER_CHARACTERISTIC)(argument))
+        {
+            return true;
+        }
+        //switch ((CharacterScript.CHARACTER_CHARACTERISTIC)argument)
+        //{
+        //    case CharacterScript.CHARACTER_CHARACTERISTIC.EMOTIONAL:
+        //        if (charStat.m_Emotional > 0.5f * CharacterScript.MAXIMUM_PERSONALTY)
+        //        {
+        //            return true;
+        //        }
+        //        break;
+        //    case CharacterScript.CHARACTER_CHARACTERISTIC.WARLIKE:
+        //        if (charStat.m_Warlike > 0.5f * CharacterScript.MAXIMUM_PERSONALTY)
+        //        {
+        //            return true;
+        //        }
+        //        break;
+        //    case CharacterScript.CHARACTER_CHARACTERISTIC.WARY:
+        //        if (charStat.m_Wary > 0.5f * CharacterScript.MAXIMUM_PERSONALTY)
+        //        {
+        //            return true;
+        //        }
+        //        break;
+        //    default:
+        //        print("Hardcoding these characteristics is good enough lol");
+        //        break;
+        //}
+        return false;
+    }
 }

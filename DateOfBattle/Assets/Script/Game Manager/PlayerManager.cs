@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class PlayerManager : MonoBehaviour {
     [Header("References for linking in the editor")]
     [Tooltip("The player mouse input component")]
     public PlayerBattleMouse playerMouseInput;
-    [Tooltip("The display to the motivation stuff through dialogue system. Will be changed soon! This is just a placeholder")]
-    public GameObject displayMotivationScreen;
     [Tooltip("The Button to end current player turn")]
     public GameObject m_endPlayerTurnScreen;
+    [Tooltip("The flowchart of Fungus")]
+    public Flowchart theConversationChart;
+    [Tooltip("The Color for unit that has used up 1 of its turn")]
+    public Color colorOfUsedUnit = new Color(1, 1, 1, 0.5f);
 
     [Header("Debugging References")]
     [Tooltip("The list of player unit gameobjects!")]
@@ -18,8 +21,12 @@ public class PlayerManager : MonoBehaviour {
     public List<GameObject> m_playerNotInteractGOList;
     [SerializeField, Tooltip("The flag to check whether the player has clicked on emptiness")]
     protected bool m_clickedFlag = false;
+    [SerializeField, Tooltip("To check whether the player has finished conversing with the unit")]
+    protected bool m_hasFinishedConversing;
     [SerializeField, Tooltip("The last player unit that has taken action!")]
     protected TileScript m_lastActionUnitTile;
+    [SerializeField, Tooltip("What characteristic player has chosen")]
+    protected CharacterScript.CHARACTER_CHARACTERISTIC m_PlayerChoseChar;
 
     /// <summary>
     /// So as to ensure it will jump out of the loop at the update of the unit's action!
@@ -56,6 +63,9 @@ public class PlayerManager : MonoBehaviour {
     private void Start()
     {
         m_playerGOList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        // When linking does not appear
+        if (!theConversationChart)
+            theConversationChart = FindObjectOfType<Flowchart>();
     }
 
     public IEnumerator updateOwnUnits()
@@ -66,7 +76,7 @@ public class PlayerManager : MonoBehaviour {
         // If there is a previous unit, move the camera towards there!
         if (m_lastActionUnitTile)
             CameraMovement.Instance.MoveTowardsPosition(m_lastActionUnitTile.transform.position);
-        else
+        else if (m_playerGOList.Count > 0)
         {
             // Randomly move the camera to any of the objects!
             CameraMovement.Instance.MoveTowardsPosition(m_playerGOList[0].transform.position);
@@ -74,6 +84,7 @@ public class PlayerManager : MonoBehaviour {
         while (m_playerNotInteractGOList.Count > 0)
         {
             CameraMovement.Instance.BeginCamFreeMovement();
+            playerMouseInput.enabled = true;
             // Will wait every frame for the player to click on the tile which belongs to the player! Also making sure that the player has not interact with the tile before!
             while (playerMouseInput.playerClickedTile == null || playerMouseInput.playerClickedTile.tag != "Player" || (!m_playerNotInteractGOList.Contains(playerMouseInput.playerClickedTile.gameObject) && playerMouseInput.playerClickedTile.tag == "Player"))
             {
@@ -84,21 +95,33 @@ public class PlayerManager : MonoBehaviour {
             // Set it to null and prevent player from pressing!
             playerMouseInput.playerClickedTile = null;
             playerMouseInput.enabled = false;
-
+            CharacterScript playerUnitStat = firstTileClicked.GetComponent<CharacterScript>();
+            m_hasFinishedConversing = false;
             // set the motivation to be true then wait for it to be inactive!
-            displayMotivationScreen.SetActive(true);
-            while (displayMotivationScreen.activeSelf)
+            //displayMotivationScreen.SetActive(true);
+            //while (displayMotivationScreen.activeSelf)
+            //    yield return null;
+            string talkToWhatChar = playerUnitStat.m_AttackType.ToString() + "|" + playerUnitStat.m_characterCharis.ToString();
+            // Try to talk to the character
+            theConversationChart.SendFungusMessage(talkToWhatChar);
+            //theConversationChart.GetExecutingBlocks()
+            //theConversationChart.
+            while (!m_hasFinishedConversing)
+            {
                 yield return null;
-
+            }
             // Then we wait till the next tile that the player clicked on or maybe there is none!
             UnitFSM playerFSM = firstTileClicked.GetComponent<UnitFSM>();
-            CharacterScript playerUnitStat = firstTileClicked.GetComponent<CharacterScript>();
+            // Wait till the player clicked on a tile and it turns out to be the enemy or player clicked on the background and nothing is selected forsure!
+            m_clickedFlag = false;
+            if (playerFSM.GetGenericState("DemoralizeState").interactWithState(m_PlayerChoseChar))
+            {
+                // Only Successful interaction will mean being able to move the unit!
+                m_endPlayerTurnScreen.SetActive(true);
+            }
             playerMouseInput.enabled = true;
             // Wait for next frame
             yield return null;
-            m_endPlayerTurnScreen.SetActive(true);
-            // Wait till the player clicked on a tile and it turns out to be the enemy or player clicked on the background and nothing is selected forsure!
-            m_clickedFlag = false;
 #region UNIT_ACTION
             while (m_endPlayerTurnScreen.activeSelf)
             {
@@ -150,10 +173,17 @@ public class PlayerManager : MonoBehaviour {
             // Removed the already interacted gameobject!
             m_playerNotInteractGOList.Remove(firstTileClicked.gameObject);
             m_lastActionUnitTile = firstTileClicked;
+            firstTileClicked.GetComponent<SpriteRenderer>().color = colorOfUsedUnit;
         }
         CameraMovement.Instance.StopCamUpdateMovement();
         // Set it to be false!
         GameManager.Instance.isItPlayerTurn = false;
+        // Then change all of the unit color back to normal
+        foreach (GameObject unitGO in m_playerGOList)
+        {
+            SpriteRenderer unitSprRender = unitGO.GetComponent<SpriteRenderer>();
+            unitSprRender.color = Color.white;
+        }
         yield break;
     }
 
@@ -187,5 +217,25 @@ public class PlayerManager : MonoBehaviour {
     protected void playerMouseBattleClickedEmpty()
     {
         m_clickedFlag = true;
+    }
+
+    public void MessageForFinishConverse()
+    {
+        m_hasFinishedConversing = true;
+    }
+
+    public void MakeItWarlike()
+    {
+        m_PlayerChoseChar = CharacterScript.CHARACTER_CHARACTERISTIC.WARLIKE;
+    }
+
+    public void MakeItEmotional()
+    {
+        m_PlayerChoseChar = CharacterScript.CHARACTER_CHARACTERISTIC.EMOTIONAL;
+    }
+
+    public void MakeItWary()
+    {
+        m_PlayerChoseChar = CharacterScript.CHARACTER_CHARACTERISTIC.WARY;
     }
 }
