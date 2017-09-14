@@ -165,6 +165,23 @@ public class PlayerManager : MonoBehaviour {
                             playerMouseInput.playerClickedTile = null;
                         }
                     }
+                    else if(playerMouseInput.playerClickedTile && (playerMouseInput.playerClickedTile.tag == "Player") && (playerUnitStat.m_AttackType == CharacterScript.TYPE_ATTACK.HEAL))
+                    {
+                        // check whether the player is close to allies!
+                        if (playerUnitStat.m_Range >= Vector3.Distance(playerUnitStat.transform.position, playerMouseInput.playerClickedTile.transform.position))
+                        {
+                            CharacterScript otherCharStat = playerMouseInput.playerClickedTile.GetComponent<CharacterScript>();
+                            playerFSM.GetGenericState("HealState").interactWithState(otherCharStat);
+                            playerFSM.ChangeCurrentState("HealState");
+                            // If Player attack, this means the unit turn has ended
+                            m_endPlayerTurnScreen.SetActive(false);
+                            break;
+                        }
+                        else
+                        {
+                            playerMouseInput.playerClickedTile = null;
+                        }
+                    }
                     yield return null;
                 }
                 // Making sure the player clicked on an empty tile and their available movement tiles are more than 0.
