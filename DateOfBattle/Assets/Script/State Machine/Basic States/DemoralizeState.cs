@@ -43,6 +43,18 @@ public class DemoralizeState : GenericState {
         {
             return true;
         }
+        else if (charStat.m_Motivation < 25)
+        {
+            // Set the damage to the maximum hp!
+            charStat.m_AttackDamage = charStat.m_MaximumHp;
+            // and suicide!
+            charStat.Attack(charStat);
+            if (charStat.IsDead())
+            {
+                Destroy(gameObject);
+            }
+            return false;
+        }
         // No time to do complicated stuff
         //if (charStat.m_characterCharis == (CharacterScript.CHARACTER_CHARACTERISTIC)(argument))
         //{

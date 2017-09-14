@@ -134,7 +134,7 @@ public class PlayerManager : MonoBehaviour {
             playerMouseInput.enabled = true;
             // Wait for next frame
             yield return null;
-#region UNIT_ACTION
+            #region UNIT_ACTION
             while (m_endPlayerTurnScreen.activeSelf)
             {
                 CameraMovement.Instance.BeginCamFreeMovement();
@@ -184,11 +184,18 @@ public class PlayerManager : MonoBehaviour {
             #endregion
             // Unblock the raycast!
             hasUIBlockRaycast = false;
-            playerUnitStat.resetMoveSpeed();
-            // Removed the already interacted gameobject!
-            m_playerNotInteractGOList.Remove(firstTileClicked.gameObject);
-            m_lastActionUnitTile = firstTileClicked;
-            firstTileClicked.GetComponent<SpriteRenderer>().color = colorOfUsedUnit;
+            if (firstTileClicked)
+            {
+                playerUnitStat.resetMoveSpeed();
+                // Removed the already interacted gameobject!
+                m_playerNotInteractGOList.Remove(firstTileClicked.gameObject);
+                m_lastActionUnitTile = firstTileClicked;
+                firstTileClicked.GetComponent<SpriteRenderer>().color = colorOfUsedUnit;
+            }
+            else
+            {
+                RemoveDestroyedUnit();
+            }
         }
         CameraMovement.Instance.StopCamUpdateMovement();
         // Set it to be false!
@@ -252,5 +259,17 @@ public class PlayerManager : MonoBehaviour {
     public void MakeItWary()
     {
         m_PlayerChoseChar = CharacterScript.CHARACTER_CHARACTERISTIC.WARY;
+    }
+
+    public void RemoveDestroyedUnit()
+    {
+        foreach (GameObject go in m_playerNotInteractGOList)
+        {
+            if (go == null)
+            {
+                m_playerNotInteractGOList.Remove(go);
+                break;
+            }
+        }
     }
 }

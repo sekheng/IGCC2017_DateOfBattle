@@ -426,6 +426,11 @@ Prefab:
       propertyPath: m_Name
       value: Player Gun Troop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
+        type: 2}
+      propertyPath: m_Motivation
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
   m_IsPrefabParent: 0
@@ -1015,6 +1020,11 @@ Prefab:
       propertyPath: warlike
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
+        type: 2}
+      propertyPath: m_Motivation
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
   m_IsPrefabParent: 0
@@ -1315,7 +1325,7 @@ Prefab:
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: selectedBlocks.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
@@ -1756,7 +1766,7 @@ Prefab:
         type: 2}
       propertyPath: selectedBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 970354779}
+      objectReference: {fileID: 970354741}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: selectedCommands.Array.data[0]
@@ -2352,6 +2362,11 @@ Prefab:
       propertyPath: commandList.Array.data[4]
       value: 
       objectReference: {fileID: 970354775}
+    - target: {fileID: 114732844875177966, guid: 65f54193947cbda4696502a54531a414,
+        type: 2}
+      propertyPath: storyText
+      value: You Lost The Battle! Restart the game to play again.
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114680365474994986, guid: 65f54193947cbda4696502a54531a414, type: 2}
     - {fileID: 114905451723925600, guid: 65f54193947cbda4696502a54531a414, type: 2}
@@ -2562,7 +2577,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 6809.3794
     y: -235.9591
-    width: 167.3076
+    width: 175.3164
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
