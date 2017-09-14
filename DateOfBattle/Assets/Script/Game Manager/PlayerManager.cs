@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour {
     public string m_MotivateDialogueStr = "Motivate";
     [Tooltip("The variable key for motivation value")]
     public string m_MotivationVarStr = "Motivation";
+    [Tooltip("The variable key for Attack Type")]
+    public string m_AttckTypeVarStr = "AttackType";
 
     [Header("Debugging References")]
     [Tooltip("The list of player unit gameobjects!")]
@@ -108,18 +110,22 @@ public class PlayerManager : MonoBehaviour {
             //string talkToWhatChar = playerUnitStat.m_AttackType.ToString() + "|" + playerUnitStat.m_characterCharis.ToString();
             // Try to talk to the character
             //theConversationChart.SendFungusMessage(talkToWhatChar);
-            theConversationChart.SetIntegerVariable()
-            //theConversationChart.GetExecutingBlocks()
-            //theConversationChart.
+            theConversationChart.SetIntegerVariable(m_MotivationVarStr, playerUnitStat.m_Motivation);
+            theConversationChart.SetStringVariable(m_AttckTypeVarStr, playerUnitStat.m_AttackType.ToString());
+            theConversationChart.SendFungusMessage(m_MotivateDialogueStr);
             while (!m_hasFinishedConversing)
             {
                 yield return null;
             }
+            // then get
             // Then we wait till the next tile that the player clicked on or maybe there is none!
             UnitFSM playerFSM = firstTileClicked.GetComponent<UnitFSM>();
+            playerUnitStat.m_Motivation = theConversationChart.GetIntegerVariable(m_MotivationVarStr);
+
             // Wait till the player clicked on a tile and it turns out to be the enemy or player clicked on the background and nothing is selected forsure!
             m_clickedFlag = false;
-            if (playerFSM.GetGenericState("DemoralizeState").interactWithState(m_PlayerChoseChar))
+            //if (playerFSM.GetGenericState("DemoralizeState").interactWithState(m_PlayerChoseChar))
+            if (playerFSM.GetGenericState("DemoralizeState").interactWithState(null))
             {
                 // Only Successful interaction will mean being able to move the unit!
                 m_endPlayerTurnScreen.SetActive(true);
