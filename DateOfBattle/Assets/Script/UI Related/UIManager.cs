@@ -19,7 +19,10 @@ public class UIManager : MonoBehaviour
     {
         this.enabled = true;
         nameString.text = name;
-        status.text = "Speed:" + speed.ToString() + " Motivation:" + morale.ToString() + "\nRange;" + range.ToString() + " AttackDamage:" + damage.ToString();
+        string DamageName = "AttackDamage:";
+        if (damage < 0)
+            DamageName = "Heal:";
+        status.text = "Speed:" + speed.ToString() + " Motivation:" + morale.ToString() + "\nRange;" + range.ToString() + DamageName + damage.ToString();
         slider.value = (float)hp / (float)maxHp;
         hpString.text = hp.ToString() + "/" + maxHp.ToString();
     }
@@ -35,8 +38,11 @@ public class UIManager : MonoBehaviour
             case CharacterScript.TYPE_ATTACK.CANNON:
                 charName = "Tank";
                 break;
+            case CharacterScript.TYPE_ATTACK.HEAL:
+                charName = "Medic";
+                break;
             default:
-                charName = "WhoCares";
+                charName = "Soldier";
                 break;
         }
         DisplayUI(charName, charStat.m_MoveSpeed, charStat.m_Motivation, charStat.m_Range, charStat.m_AttackDamage, charStat.m_MaximumHp, charStat.m_Hp);

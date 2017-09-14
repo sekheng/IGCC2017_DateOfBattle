@@ -19,8 +19,16 @@ public class DamageTextControl : MonoBehaviour {
 
     public void PrintDamageValue(int damage,GameObject parent)
     {
+        if (damage < 0)
+        {
+            text.color = Color.green;
+        }
+        else
+        {
+            text.color = Color.red;
+        }
         this.gameObject.transform.position = parent.transform.position;
-        text.text = (damage.ToString());
+        text.text = (Mathf.Abs(damage).ToString());
         // Just play the animation state name, at Base Layer, Starting from 0!
         animator.Play("Hopping", 0, 0);
         //animator.SetTrigger("Damage");

@@ -141,6 +141,7 @@ public class PlayerManager : MonoBehaviour {
             playerMouseInput.enabled = true;
             // Wait for next frame
             yield return null;
+            playerMouseInput.playerClickedTile = null;
             #region UNIT_ACTION
             while (m_endPlayerTurnScreen.activeSelf)
             {
@@ -148,7 +149,7 @@ public class PlayerManager : MonoBehaviour {
                 // Wait for PlayerBattleMouse to send the event trigger!
                 while (!m_clickedFlag && m_endPlayerTurnScreen.activeSelf)
                 {
-                    if (playerMouseInput.playerClickedTile && (playerMouseInput.playerClickedTile.tag == "Enemy" || playerMouseInput.playerClickedTile.tag == "EnemyFortress"))
+                    if (playerMouseInput.playerClickedTile && (playerMouseInput.playerClickedTile.tag == "Enemy" || playerMouseInput.playerClickedTile.tag == "EnemyFortress") && playerUnitStat.m_AttackType != CharacterScript.TYPE_ATTACK.HEAL)
                     {
                         // check whether the player is close to the enemy!
                         if (playerUnitStat.m_Range >= Vector3.Distance(playerUnitStat.transform.position, playerMouseInput.playerClickedTile.transform.position))
@@ -165,14 +166,14 @@ public class PlayerManager : MonoBehaviour {
                             playerMouseInput.playerClickedTile = null;
                         }
                     }
-                    else if(playerMouseInput.playerClickedTile && (playerMouseInput.playerClickedTile.tag == "Player") && (playerUnitStat.m_AttackType == CharacterScript.TYPE_ATTACK.HEAL))
+                    else if (playerMouseInput.playerClickedTile && playerMouseInput.playerClickedTile.tag == "Player" && playerUnitStat.m_AttackType == CharacterScript.TYPE_ATTACK.HEAL)
                     {
                         // check whether the player is close to allies!
                         if (playerUnitStat.m_Range >= Vector3.Distance(playerUnitStat.transform.position, playerMouseInput.playerClickedTile.transform.position))
                         {
                             CharacterScript otherCharStat = playerMouseInput.playerClickedTile.GetComponent<CharacterScript>();
-                            playerFSM.GetGenericState("HealState").interactWithState(otherCharStat);
-                            playerFSM.ChangeCurrentState("HealState");
+                            playerFSM.GetGenericState("AttackState").interactWithState(otherCharStat);
+                            playerFSM.ChangeCurrentState("AttackState");
                             // If Player attack, this means the unit turn has ended
                             m_endPlayerTurnScreen.SetActive(false);
                             break;
