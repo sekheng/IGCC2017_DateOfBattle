@@ -1315,7 +1315,7 @@ Prefab:
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: selectedBlocks.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
@@ -1756,12 +1756,12 @@ Prefab:
         type: 2}
       propertyPath: selectedBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 970354777}
+      objectReference: {fileID: 970354779}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: selectedCommands.Array.data[0]
       value: 
-      objectReference: {fileID: 970354816}
+      objectReference: {fileID: 970354764}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: selectedBlocks.Array.data[1]
@@ -1835,17 +1835,17 @@ Prefab:
     - target: {fileID: 114530697832471474, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: nodeRect.y
-      value: 426.3562
+      value: 429.21335
       objectReference: {fileID: 0}
     - target: {fileID: 114956392985401550, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: nodeRect.x
-      value: 6943.1035
+      value: 6953.1045
       objectReference: {fileID: 0}
     - target: {fileID: 114956392985401550, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: nodeRect.y
-      value: 424.91876
+      value: 430.633
       objectReference: {fileID: 0}
     - target: {fileID: 114457879962484942, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
@@ -1855,7 +1855,7 @@ Prefab:
     - target: {fileID: 114457879962484942, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: nodeRect.y
-      value: 435.94788
+      value: 434.51932
       objectReference: {fileID: 0}
     - target: {fileID: 114052354596592230, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
@@ -2346,7 +2346,7 @@ Prefab:
         type: 2}
       propertyPath: commandList.Array.data[3]
       value: 
-      objectReference: {fileID: 970354781}
+      objectReference: {fileID: 970354835}
     - target: {fileID: 114655003443125260, guid: 65f54193947cbda4696502a54531a414,
         type: 2}
       propertyPath: commandList.Array.data[4]
@@ -2562,7 +2562,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 6809.3794
     y: -235.9591
-    width: 155.47948
+    width: 167.3076
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2992,12 +2992,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 970354738}
   m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
---- !u!114 &970354781 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114333359113053004, guid: 65f54193947cbda4696502a54531a414,
-    type: 2}
-  m_PrefabInternal: {fileID: 970354738}
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
 --- !u!114 &970354782 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114036057679126314, guid: 65f54193947cbda4696502a54531a414,
@@ -3204,7 +3198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
 --- !u!114 &970354816
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 970354740}
@@ -3445,6 +3439,12 @@ MonoBehaviour:
   stringData:
     stringRef: {fileID: 0}
     stringVal: 
+--- !u!114 &970354835 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114333359113053004, guid: 65f54193947cbda4696502a54531a414,
+    type: 2}
+  m_PrefabInternal: {fileID: 970354738}
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
 --- !u!1 &999291513
 GameObject:
   m_ObjectHideFlags: 0

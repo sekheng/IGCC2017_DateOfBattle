@@ -120,6 +120,7 @@ public class PlayerManager : MonoBehaviour {
             // then get
             // Then we wait till the next tile that the player clicked on or maybe there is none!
             UnitFSM playerFSM = firstTileClicked.GetComponent<UnitFSM>();
+            yield return null;
             playerUnitStat.m_Motivation = theConversationChart.GetIntegerVariable(m_MotivationVarStr);
 
             // Wait till the player clicked on a tile and it turns out to be the enemy or player clicked on the background and nothing is selected forsure!
