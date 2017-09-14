@@ -104,6 +104,7 @@ public class PlayerBattleMouse : MonoBehaviour {
             Gizmos.DrawWireSphere(playerClickedTile.transform.position, 1);
         }
     }
+#endif
 
     /// <summary>
     /// When clicked, the selection UI appears on that object.
@@ -164,6 +165,4 @@ public class PlayerBattleMouse : MonoBehaviour {
     //{
     //    selectUI.transform.position = playerClickedTile.transform.position;
     //}
-
-#endif
 }
