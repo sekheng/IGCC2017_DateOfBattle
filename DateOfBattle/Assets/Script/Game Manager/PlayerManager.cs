@@ -151,13 +151,16 @@ public class PlayerManager : MonoBehaviour {
                 // Making sure the player clicked on an empty tile and their available movement tiles are more than 0.
                 if (!hasUIBlockRaycast && !playerMouseInput.playerClickedTile && playerUnitStat.m_leftOverMoveSpeed > 0)
                 {
+                    // If successful interaction, then will move!
                     // Player pressed nothing, so move towards there!
-                    playerFSM.GetGenericState("MoveState").interactWithState(playerMouseInput.playerMouseLastClickedPos);
-                    playerFSM.ChangeCurrentState("MoveState");
-                    // Then wait for the FSM to be finished updating!
-                    yield return playerFSM.updateStateCoroutine;
+                    if (playerFSM.GetGenericState("MoveState").interactWithState(playerMouseInput.playerMouseLastClickedPos))
+                    {
+                        playerFSM.ChangeCurrentState("MoveState");
+                        // Then wait for the FSM to be finished updating!
+                        yield return playerFSM.updateStateCoroutine;
+                    }
                 }
-                else
+                //else
                 {
                     // Reset the tile!
                     playerMouseInput.playerClickedTile = null;

@@ -11,12 +11,6 @@ public class EnemyMoveState : MoveState {
     public GameObject playerFortressTile;
     [Tooltip("Has begin attacked. To keep track whether is it attacking or not!")]
     public bool isItAttacking = false;
-    [Tooltip("How many seconds to wait if A* search algorithm does not respond!")]
-    public float m_HowManySecond = 1.0f;
-
-    [Header("The debugging references for enemy movestate")]
-    [SerializeField, Tooltip("The Time counter")]
-    protected float m_timeCounter = 0;
 
 	// Use this for initialization
 	protected override void Start () {

@@ -9,8 +9,10 @@ public class MoveState : GenericState {
     [Header("The value needed for move state")]
     [Tooltip("Different from Character stat move speed. This name is misleading as the lower the value, the slower it run so will investigate more on it if have time.")]
     public float m_animMoveSpeed = 0.3f;
+    [Tooltip("How many seconds to wait if A* search algorithm does not respond!")]
+    public float m_HowManySecond = 1.0f;
 
-    [Header("The debugging and linking values")]
+    [Header("The debugging and linking values for MoveState")]
     [Tooltip("The Tile to move towards to")]
     public TileScript moveToTile;
     [Tooltip("The position to move towards to")]
@@ -23,9 +25,11 @@ public class MoveState : GenericState {
     protected Vector3[] m_wayptToFollow;
     [SerializeField, Tooltip("The original position of the unit before moving to another position!")]
     protected Vector3 m_originalPos;
+    [SerializeField, Tooltip("The Time counter")]
+    protected float m_timeCounter = 0;
 
-	// Use this for initialization
-	protected virtual void Start () {
+    // Use this for initialization
+    protected virtual void Start () {
         // Making sure the name is the same.
         stateName = "MoveState";
         charStats = GetComponent<CharacterScript>();
@@ -48,12 +52,21 @@ public class MoveState : GenericState {
         }
         // Wait till it has find the path!
         while (!hasFinishedPath)
+        {
+            m_timeCounter += Time.deltaTime;
+            if (m_timeCounter > m_HowManySecond)
+            {
+                yield break;
+            }
             yield return null;
+        }
         int currentMoveIndex = 0;
         m_originalPos = transform.position;
         CameraMovement.Instance.StartFollowingTransfrom(transform);
         m_FSMOwner.m_animScript.setWalking(true);
-        doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
+        // Only do walking attack animation if there are paths to even move!
+        if (currentMoveIndex < m_wayptToFollow.Length)
+            doWalkingDirectionAnim(m_wayptToFollow[currentMoveIndex]);
         // We will count down the movement speed and check to make sure the current index is not greater than the array
         while (m_MoveCountDown > 0 && currentMoveIndex < m_wayptToFollow.Length)
         {
@@ -100,6 +113,7 @@ public class MoveState : GenericState {
         hasFinishedPath = false;
         reportToGridNewPos();
         m_FSMOwner.m_animScript.setWalking();
+        m_timeCounter = 0;
     }
 
     public override void resetState()
@@ -124,12 +138,12 @@ public class MoveState : GenericState {
             moveToTile = null;
             return true;
         }
-        moveToTile = argument as TileScript;
-        // If the object is there, then the casting is successful so return true
-        if (moveToTile)
-        {
-            return true;
-        }
+        //moveToTile = argument as TileScript;
+        //// If the object is there, then the casting is successful so return true
+        //if (moveToTile)
+        //{
+        //    return true;
+        //}
         return false;
     }
 
