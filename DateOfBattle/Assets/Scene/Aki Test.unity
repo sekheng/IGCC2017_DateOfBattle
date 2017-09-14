@@ -208,12 +208,27 @@ Prefab:
     - target: {fileID: 224143390656586850, guid: 76313918e27ddc14dbe0a3021bc77905,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224143390656586850, guid: 76313918e27ddc14dbe0a3021bc77905,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224237153078443368, guid: 76313918e27ddc14dbe0a3021bc77905,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224237153078443368, guid: 76313918e27ddc14dbe0a3021bc77905,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224237153078443368, guid: 76313918e27ddc14dbe0a3021bc77905,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76313918e27ddc14dbe0a3021bc77905, type: 2}
@@ -2561,6 +2576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: 
   m_FSMOwner: {fileID: 0}
+  m_DelayUpdateForCam: 0.5
   charStats: {fileID: 0}
   targetChara: {fileID: 0}
 --- !u!1001 &1796088363

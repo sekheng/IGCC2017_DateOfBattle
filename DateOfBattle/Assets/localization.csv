@@ -1,8 +1,8 @@
 Key,Description,Standard,JAP
 MENU.Level1Flowchart.760,,English,英語
 MENU.Level1Flowchart.763,,日本語,日本語
-SAY.Level1Flowchart.119. ,,You Won The Battle! Restart the game to play again.,
-SAY.Level1Flowchart.122. ,,You Lost The Battle! Restart the game to play again.,
+SAY.Level1Flowchart.119.,,You Won The Battle! Restart the game to play again.,あなたは戦いに勝利した！
+SAY.Level1Flowchart.122.,,You Lost The Battle! Restart the game to play again.,あなたは戦いに敗北した！
 SAY.Level1Flowchart.156.Soldier,,"Got it, the men are ready",了解。準備開始。
 SAY.Level1Flowchart.168.Soldier,,Understood,分かりました。
 SAY.Level1Flowchart.174.Soldier,,The men won’t like this one bit,隊はやりたくないと言っています。
@@ -12,7 +12,7 @@ SAY.Level1Flowchart.316.Soldier,,Not sure if the men will care for that,でき�
 SAY.Level1Flowchart.702.Soldier,,Hmm...,うーむ……
 SAY.Level1Flowchart.321.Soldier,Intro Soldier,What do you want?,何をして欲しいんですか？
 SAY.Level1Flowchart.354.Soldier,Intro Soldier,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
-MENU.Level1Flowchart.323,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.323,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.324,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.325,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.445,,I love you!,君を愛してるぞ！
@@ -34,7 +34,7 @@ MENU.Level1Flowchart.750,,I love you!,君を愛してるぞ！
 MENU.Level1Flowchart.755,,You make me sick. Pathetic.,お前にはうんざりだよ、可哀想に。
 SAY.Level1Flowchart.394.Soldier,Intro Soldier,"The men are feeling a little restless Sir, what are your orders?",隊が少しざわついています、サー。指示は何ですか？
 SAY.Level1Flowchart.396.Soldier,Intro Soldier,Orders Sir?,指示を、サー？
-MENU.Level1Flowchart.400,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.400,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.401,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.402,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.751,,I love you!,君を愛してるぞ！
@@ -43,13 +43,13 @@ SAY.Level1Flowchart.411.Soldier,Intro Soldier,"The men are feeling a little rest
 SAY.Level1Flowchart.413.Soldier,Intro Soldier,Orders Sir?,指示を、サー？
 MENU.Level1Flowchart.417,,Put yourselves in a defensive position to prepare for an attack!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.418,,"Please be careful, I don’t want anyone to die!",気を付けて、誰にも死んでほしくないんだ！
-MENU.Level1Flowchart.419,, Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
+MENU.Level1Flowchart.419,,Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.752,,I love you!,君を愛してるぞ！
 MENU.Level1Flowchart.757,,You make me sick. Pathetic.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.457. ,,They have fled the battlefield!,
+SAY.Level1Flowchart.457.,,They have fled the battlefield!,彼らは戦場から逃げてしまいました！
 SAY.Level1Flowchart.470.Soldier,Intro Soldier,"Requesting orders, Sir!",指示をお願いします、サー！
 SAY.Level1Flowchart.472.Soldier,Intro Soldier,"Sir, we are readily awaiting your command!",サー、ご命令を！
-MENU.Level1Flowchart.476,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.476,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.477,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.478,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.753,,I love you!,君を愛してるぞ！
@@ -58,30 +58,30 @@ SAY.Level1Flowchart.487.Soldier,Intro Soldier,"Requesting orders, Sir!",指示�
 SAY.Level1Flowchart.489.Soldier,Intro Soldier,"Sir, we are readily awaiting your command!",サー、ご命令を！
 MENU.Level1Flowchart.493,,Put yourselves in a defensive position to prepare for an attack!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.494,,"Please be careful, I don’t want anyone to die!",気を付けて、誰にも死んでほしくないんだ！
-MENU.Level1Flowchart.495,, Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
+MENU.Level1Flowchart.495,,Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.754,,I love you!,君を愛してるぞ！
 MENU.Level1Flowchart.759,,You make me sick. Pathetic.,お前にはうんざりだよ、可哀想に。
 SAY.Level1Flowchart.502.Soldier,,We’re on it,我々はその最中です。
 SAY.Level1Flowchart.507.Soldier,,Yes...Sir!,了解。……あ、サー！
 SAY.Level1Flowchart.512.Soldier,,"Sir, right away Sir!",サー、了解、直ちにそうします、サー！
-SAY.Level1Flowchart.535.Tank Driver,,Soldier More Battle,-
-SAY.Level1Flowchart.541.Tank Driver,,Soldier More Emotional,-
-SAY.Level1Flowchart.546.Tank Driver,,Soldier More Battle,-
-SAY.Level1Flowchart.552.Tank Driver,,Soldier More Battle,-
-SAY.Level1Flowchart.558.Tank Driver,,Soldier More Emotional,-
-SAY.Level1Flowchart.563.Tank Driver,,Soldier More Battle,-
-SAY.Level1Flowchart.569.Tank Driver,,Soldier More Battle,-
+SAY.Level1Flowchart.535.Tank Driver,,-Placeholder- Good,-
+SAY.Level1Flowchart.541.Tank Driver,,-Placeholder- Bad,-
+SAY.Level1Flowchart.546.Tank Driver,,-Placeholder- Good,-
+SAY.Level1Flowchart.552.Tank Driver,,-Placeholder- Good,-
+SAY.Level1Flowchart.558.Tank Driver,,-Placeholder- Bad,-
+SAY.Level1Flowchart.563.Tank Driver,,-Placeholder- Good,-
+SAY.Level1Flowchart.569.Tank Driver,,-Placeholder- Good,-
 SAY.Level1Flowchart.577.Tank Driver,Intro Tank,What do you want?,何をして欲しいんですか？
 SAY.Level1Flowchart.579.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
 MENU.Level1Flowchart.583,,Put yourselves in a defensive position to prepare for an attack!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.584,,"Please be careful, I don’t want anyone to die!",気を付けて、誰にも死んでほしくないんだ！
-MENU.Level1Flowchart.585,, Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
+MENU.Level1Flowchart.585,,Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.587,,-Placeholder- Good,-
 MENU.Level1Flowchart.588,,-Placeholder- Neutral,-
 MENU.Level1Flowchart.589,,-Placeholder- Bad,-
 SAY.Level1Flowchart.594.Tank Driver,Intro Tank,What do you want?,何をして欲しいんですか？
 SAY.Level1Flowchart.596.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
-MENU.Level1Flowchart.600,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.600,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.601,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.602,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.604,,-Placeholder- Good,-
@@ -91,13 +91,13 @@ SAY.Level1Flowchart.611.Tank Driver,Intro Tank,What do you want?,何をして欲
 SAY.Level1Flowchart.613.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
 MENU.Level1Flowchart.617,,Put yourselves in a defensive position to prepare for an attack!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.618,,"Please be careful, I don’t want anyone to die!",気を付けて、誰にも死んでほしくないんだ！
-MENU.Level1Flowchart.619,, Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
+MENU.Level1Flowchart.619,,Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.621,,-Placeholder- Good,-
 MENU.Level1Flowchart.622,,-Placeholder- Neutral,-
 MENU.Level1Flowchart.623,,-Placeholder- Bad,-
 SAY.Level1Flowchart.628.Tank Driver,Intro Tank,What do you want?,何をして欲しいんですか？
 SAY.Level1Flowchart.630.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
-MENU.Level1Flowchart.634,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.634,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.635,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.636,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.638,,-Placeholder- Good,-
@@ -107,14 +107,14 @@ SAY.Level1Flowchart.645.Soldier,Intro Tank,What do you want?,何をして欲し�
 SAY.Level1Flowchart.647.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
 MENU.Level1Flowchart.651,,Put yourselves in a defensive position to prepare for an attack!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.652,,"Please be careful, I don’t want anyone to die!",気を付けて、誰にも死んでほしくないんだ！
-MENU.Level1Flowchart.653,, Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
-MENU.Level1Flowchart.655,,Make you Warlike,-
-MENU.Level1Flowchart.656,,More Soldier Emotional,-
-MENU.Level1Flowchart.657,,More Soldier Wary,-
-SAY.Level1Flowchart.660.Tank Driver,,Soldier More Emotional,-
+MENU.Level1Flowchart.653,,Tell those cowards to get in a hole and stay there!”,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
+MENU.Level1Flowchart.655,,-Placeholder- Good,-
+MENU.Level1Flowchart.656,,-Placeholder- Bad,-
+MENU.Level1Flowchart.657,,-Placeholder- Neutral,-
+SAY.Level1Flowchart.660.Tank Driver,,-Placeholder- Bad,-
 SAY.Level1Flowchart.667.Tank Driver,Intro Tank,What do you want?,何をして欲しいんですか？
 SAY.Level1Flowchart.669.Tank Driver,Intro Tank,Make it quick we’re fighting a real battle here!,速くしてください、戦っているのは我々なんですよ！
-MENU.Level1Flowchart.672,, I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
+MENU.Level1Flowchart.672,,I need you and your men to attack the enemy directly!”,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.673,,Perhaps you could find an enemy and...uh...attack them I guess?,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.674,,Stop slacking and get your asses out there!,怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.675,,I love you!,君を愛してるぞ！
@@ -129,9 +129,9 @@ SAY.Level1Flowchart.691.Tank Driver,,I guess that’s not a bad idea,悪くな�
 SAY.Level1Flowchart.693.Tank Driver,,We’ll see what we can do”,それならできます。
 SAY.Level1Flowchart.726.Soldier,,...Sir?,サー、聞こえました。
 SAY.Level1Flowchart.727.Soldier,,What is wrong with you?,何をおっしゃっているのですか？
-SAY.Level1Flowchart.768. ,Intro Text,Welcome to the game! Click to begin!,
-SAY.Level1Flowchart.769. ,Intro Text,ようこそ、我々のゲームへ！クリックするとゲームが始まります！,
-SAY.Level1Flowchart.778.Soldier,,What is wrong with you?,What is wrong with you?
+SAY.Level1Flowchart.768.,Intro Text,Welcome to the game! Click to begin!,ようこそ、我々のゲームへ！クリックするとゲームが始まります！
+SAY.Level1Flowchart.769.,Intro Text,ようこそ、我々のゲームへ！クリックするとゲームが始まります！,ようこそ、我々のゲームへ！クリックするとゲームが始まります！
+SAY.Level1Flowchart.778.Soldier,,What is wrong with you?,何をおっしゃっているのですか？
 SAY.Level1Flowchart.784.Soldier,,...Sir?,サー、聞こえました。
 MENU.Level1Flowchart.1012,,[Heal],[ヒール]
 MENU.Level1Flowchart.1013,,[Defend,[防御]
@@ -139,100 +139,100 @@ MENU.Level1Flowchart.1015,,[Heal],[ヒール]
 MENU.Level1Flowchart.1016,,[Defend,[防御]
 MENU.Level1Flowchart.1017,,[Heal],[ヒール]
 MENU.Level1Flowchart.1018,,[Defend,[防御]
-SAY.Level1Flowchart.798.Medic,Intro Soldier,"Hmph, hurry up so we can get back to work",
-SAY.Level1Flowchart.800.Medic,Intro Soldier,Yes? What is it?,
+SAY.Level1Flowchart.798.Medic,Intro Soldier,"Hmph, hurry up so we can get back to work",むむー、作業の邪魔をしないでください。
+SAY.Level1Flowchart.800.Medic,Intro Soldier,Yes? What is it?,はい？なんです？
 MENU.Level1Flowchart.803,,I need your unit to move up and heal our allies!,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.804,,I leave it in your hands to heal or defend,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.805,,"Pick up the slack already, there’s good soldiers dying out there!",怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.806,,My heart stops when I see you out there,君を愛してるぞ！
 MENU.Level1Flowchart.807,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.812.Medic,Intro Soldier,"Hmph, hurry up so we can get back to work",
-SAY.Level1Flowchart.814.Medic,Intro Soldier,Yes? What is it?,
+SAY.Level1Flowchart.812.Medic,Intro Soldier,"Hmph, hurry up so we can get back to work",むむー、作業の邪魔をしないでください。
+SAY.Level1Flowchart.814.Medic,Intro Soldier,Yes? What is it?,はい？なんです？
 MENU.Level1Flowchart.816,,"Get your unit somewhere safe, there’s enemies incoming!",敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.817,,"Be careful, I wouldn’t want anything to happen to you...",気を付けて、誰にも死んでほしくないんだ！
 MENU.Level1Flowchart.818,,Get your fragile and weak unit somewhere safe so you don’t die!,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.819,,My heart stops when I see you out there,君を愛してるぞ！
 MENU.Level1Flowchart.820,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.825.Medic,Intro Soldier,What do you need Sir?,
-SAY.Level1Flowchart.827.Medic,Intro Soldier,Ready to assist,
+SAY.Level1Flowchart.825.Medic,Intro Soldier,What do you need Sir?,何が必要ですか、司令官？
+SAY.Level1Flowchart.827.Medic,Intro Soldier,Ready to assist,アシストの準備をしています！
 MENU.Level1Flowchart.829,,I need your unit to move up and heal our allies!,部下と共に直接攻撃だ！
 MENU.Level1Flowchart.830,,I leave it in your hands to heal or defend,まさか敵が近くにいるのか？…あー、攻撃したほうがいいよな？
 MENU.Level1Flowchart.831,,"Pick up the slack already, there’s good soldiers dying out there!",怠けるな！腰を上げろ、早く！
 MENU.Level1Flowchart.832,,My heart stops when I see you out there,君を愛してるぞ！
 MENU.Level1Flowchart.833,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.838.Medic,Intro Soldier,What do you need Sir?,
-SAY.Level1Flowchart.840.Medic,Intro Soldier,Ready to assist,
+SAY.Level1Flowchart.838.Medic,Intro Soldier,What do you need Sir?,何が必要ですか、司令官？
+SAY.Level1Flowchart.840.Medic,Intro Soldier,Ready to assist,アシストの準備をしています！
 MENU.Level1Flowchart.844,,"Get your unit somewhere safe, there’s enemies incoming!",敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.845,,"Be careful, I wouldn’t want anything to happen to you...",気を付けて、誰にも死んでほしくないんだ！
 MENU.Level1Flowchart.846,,My heart stops when I see you out there,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.990,,I love you!,君を愛してるぞ！
 MENU.Level1Flowchart.991,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.1021.Medic,Intro Soldier,Yes Commander? Ready for orders!,
-SAY.Level1Flowchart.1023.Medic,Intro Soldier,What do you need Sir?,
+SAY.Level1Flowchart.1021.Medic,Intro Soldier,Yes Commander? Ready for orders!,はい司令官、指示をお願いします！
+SAY.Level1Flowchart.1023.Medic,Intro Soldier,What do you need Sir?,何かしたほうがいいですか？サー！
 MENU.Level1Flowchart.857,,I need your unit to move up and heal our allies!,敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.858,,I leave it in your hands to heal or defend,気を付けて、誰にも死んでほしくないんだ！
 MENU.Level1Flowchart.859,,"Pick up the slack already, there’s good soldiers dying out there!",そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.992,,My heart stops when I see you out there,君を愛してるぞ！
 MENU.Level1Flowchart.993,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.866.Medic,Intro Soldier,Yes Commander? Ready for orders!,
-SAY.Level1Flowchart.868.Medic,Intro Soldier,What do you need Sir?,
+SAY.Level1Flowchart.866.Medic,Intro Soldier,Yes Commander? Ready for orders!,はい司令官、指示をお願いします！
+SAY.Level1Flowchart.868.Medic,Intro Soldier,What do you need Sir?,何かしたほうがいいですか？サー！
 MENU.Level1Flowchart.870,,"Get your unit somewhere safe, there’s enemies incoming!",敵の攻撃に備え、受けに回れ！
 MENU.Level1Flowchart.871,,"Be careful, I wouldn’t want anything to happen to you...",気を付けて、誰にも死んでほしくないんだ！
 MENU.Level1Flowchart.872,,Get your fragile and weak unit somewhere safe so you don’t die!,そこにいる腰抜けどもには穴にでも入ってろと伝えておけ！
 MENU.Level1Flowchart.994,,My heart stops when I see you out there,君を愛してるぞ！
 MENU.Level1Flowchart.995,,God you’re annoying.,お前にはうんざりだよ、可哀想に。
-SAY.Level1Flowchart.891.Medic,,"Hmm, I’ll let them know….thanks",
-SAY.Level1Flowchart.893.Medic,,I hope that you’re right about this...,
-SAY.Level1Flowchart.920.Medic,,Not sure they will listen to me honestly,
-SAY.Level1Flowchart.922.Medic,,I’ll check but I don’t think the other medics are interested,
-SAY.Level1Flowchart.926.Medic,,"Gah, idiot!",
-SAY.Level1Flowchart.928.Medic,,Why are we even fighting under you?,
-SAY.Level1Flowchart.933.Medic,,I think we can get our unit moving,
-SAY.Level1Flowchart.935.Medic,,"Okay, we’re heading out",
-SAY.Level1Flowchart.943.Medic,,Hmm… the unit seems restless Sir,
-SAY.Level1Flowchart.945.Medic,,I’m not too comfortable with that idea,
-SAY.Level1Flowchart.953.Medic,,Eh!? What!?,
-SAY.Level1Flowchart.955.Medic,,"I don’t understand, I thought we shared the same goals...",
-SAY.Level1Flowchart.983.Medic,,It won’t hurt will it?,
-SAY.Level1Flowchart.985.Medic,,We’ll heal them up good Sir!,
-SAY.Level1Flowchart.973.Medic,,"Sure thing, moving out",
-SAY.Level1Flowchart.975.Medic,,"Okay Sir, we’ll try our best",
-SAY.Level1Flowchart.963.Medic,,Commander why would you say such a thing?,
-SAY.Level1Flowchart.965.Medic,,I trusted you Commander....,
-SAY.Level1Flowchart.878.Medic,,...Sir?,
-SAY.Level1Flowchart.884.Medic,,What is wrong with you?,
-CHARACTER.Sniper,,Sniper,
-CHARACTER.Helicopter Pilot,,Helicopter Pilot,
+SAY.Level1Flowchart.891.Medic,,"Hmm, I’ll let them know….thanks",うーん、仲間にも伝えてみます……ありがとうございます。
+SAY.Level1Flowchart.893.Medic,,I hope that you’re right about this...,あなたの考えが正しいことを願います……
+SAY.Level1Flowchart.920.Medic,,Not sure they will listen to me honestly,仲間たちが指示を聞いてくれるかわかりません。
+SAY.Level1Flowchart.922.Medic,,I’ll check but I don’t think the other medics are interested,私は注意しますが、他の軍医たちは聞かないでしょうね。
+SAY.Level1Flowchart.926.Medic,,"Gah, idiot!",がー！ばか！
+SAY.Level1Flowchart.928.Medic,,Why are we even fighting under you?,なんで私はあなたの部下として戦っているのですか？
+SAY.Level1Flowchart.933.Medic,,I think we can get our unit moving,行けると思います。
+SAY.Level1Flowchart.935.Medic,,"Okay, we’re heading out",了解、出ます。
+SAY.Level1Flowchart.943.Medic,,Hmm… the unit seems restless Sir,うーん、隊に落ち着きがありません、サー。
+SAY.Level1Flowchart.945.Medic,,I’m not too comfortable with that idea,私はそのアイデアがいいものとは思えません……
+SAY.Level1Flowchart.953.Medic,,Eh!? What!?,えー！？なぜです！？
+SAY.Level1Flowchart.955.Medic,,"I don’t understand, I thought we shared the same goals...",なぜですか、我々は同じことを考えていると思っていたのに。
+SAY.Level1Flowchart.983.Medic,,It won’t hurt will it?,負傷する可能性はありますか？
+SAY.Level1Flowchart.985.Medic,,We’ll heal them up good Sir!,速やかに直して見せましょう！
+SAY.Level1Flowchart.973.Medic,,"Sure thing, moving out",もちろんです。移動を開始します。
+SAY.Level1Flowchart.975.Medic,,"Okay Sir, we’ll try our best",了解です、サー！全力で行きますよ！
+SAY.Level1Flowchart.963.Medic,,Commander why would you say such a thing?,司令官、なぜそんなことを？
+SAY.Level1Flowchart.965.Medic,,I trusted you Commander....,司令官のこと、信じてます……
+SAY.Level1Flowchart.878.Medic,,...Sir?,…サー？
+SAY.Level1Flowchart.884.Medic,,What is wrong with you?,何をおっしゃっているのですか？
+CHARACTER.Sniper,,Sniper,狙撃手
+CHARACTER.Helicopter Pilot,,Helicopter Pilot,操縦士
 SAY.Intro Flowchart.15.,,What do you want?,何をして欲しいんですか？
-SAY.Intro Flowchart.99.,,Soldier More Battle,-
+SAY.Intro Flowchart.99.,,-Placeholder- Good,-
 SAY.Intro Flowchart.119.,,You Won The Battle! Restart the game to play again.,あなたは戦いに勝利した！
-SAY.Intro Flowchart.23.,,Soldier More Emotional,-
+SAY.Intro Flowchart.23.,,-Placeholder- Bad,-
 SAY.Intro Flowchart.4.,Intro Text,Welcome to the game. Press here to begin the game.,ようこそ、我々のゲームへ！クリックするとゲームが始まります！
 SAY.Intro Flowchart.80.,Intro Soldier,What do you want?,何をして欲しいんですか？
-SAY.Intro Flowchart.57.,,Soldier More Battle,-
-SAY.Intro Flowchart.75.,,Soldier More Battle,-
-SAY.Intro Flowchart.19.,,Soldier More Battle,-
-SAY.Intro Flowchart.93.,,Soldier More Battle,-
-MENU.Intro Flowchart.63,,Make you Warlike,-
+SAY.Intro Flowchart.57.,,-Placeholder- Good,-
+SAY.Intro Flowchart.75.,,-Placeholder- Good,-
+SAY.Intro Flowchart.19.,,-Placeholder- Good,-
+SAY.Intro Flowchart.93.,,-Placeholder- Good,-
+MENU.Intro Flowchart.63,,-Placeholder- Good,-
 SAY.Intro Flowchart.112.,,What do you want?,何をして欲しいんですか？
-MENU.Intro Flowchart.25,,More Soldier Emotional,-
+MENU.Intro Flowchart.25,,-Placeholder- Bad,-
 SAY.Intro Flowchart.12.,Intro Soldier,What do you want?,何をして欲しいんですか？
-MENU.Intro Flowchart.83,,More Soldier Wary,-
-MENU.Intro Flowchart.65,,More Soldier Wary,-
-SAY.Intro Flowchart.28.,,Soldier More Battle,-
+MENU.Intro Flowchart.83,,-Placeholder- Neutral,-
+MENU.Intro Flowchart.65,,-Placeholder- Neutral,-
+SAY.Intro Flowchart.28.,,-Placeholder- Good,-
 SAY.Intro Flowchart.115.,,What do you want?,何をして欲しいんですか？
-MENU.Intro Flowchart.82,,More Soldier Emotional,-
-SAY.Intro Flowchart.69.,,Soldier More Emotional,-
-SAY.Intro Flowchart.87.,,Soldier More Emotional,-
-MENU.Intro Flowchart.16,,Make you Warlike,-
+MENU.Intro Flowchart.82,,-Placeholder- Bad,-
+SAY.Intro Flowchart.69.,,-Placeholder- Bad,-
+SAY.Intro Flowchart.87.,,-Placeholder- Bad,-
+MENU.Intro Flowchart.16,,-Placeholder- Good,-
 SAY.Intro Flowchart.62.,Intro Soldier,What do you want?,何をして欲しいんですか？
 SAY.Intro Flowchart.122.,,You Won The Battle! Restart the game to play again.,あなたは戦いに勝利した！
-MENU.Intro Flowchart.81,,Make you Warlike,-
-MENU.Intro Flowchart.64,,More Soldier Emotional,-
-MENU.Intro Flowchart.30,,More Soldier Wary,-
+MENU.Intro Flowchart.81,,-Placeholder- Good,-
+MENU.Intro Flowchart.64,,-Placeholder- Bad,-
+MENU.Intro Flowchart.30,,-Placeholder- Neutral,-
 CHARACTER.Medic,,Medic,軍医
 CHARACTER.Soldier,,Soldier,兵士
 CHARACTER.Tank Driver,,Tank Driver,戦車兵
-CHARACTER. ,The Intro Narrator, ,
-CHARACTER.Tank,,Tank,
-CHARACTER.SupposedToBeInvisibleNarrator,The Intro Narrator,SupposedToBeInvisibleNarrator,
+CHARACTER.,The Intro Narrator,,
+CHARACTER.Tank,,Tank,戦車兵
+CHARACTER.SupposedToBeInvisibleNarrator,The Intro Narrator, ,
