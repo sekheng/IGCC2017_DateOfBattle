@@ -13,6 +13,10 @@ public class PlayerManager : MonoBehaviour {
     public Flowchart theConversationChart;
     [Tooltip("The Color for unit that has used up 1 of its turn")]
     public Color colorOfUsedUnit = new Color(1, 1, 1, 0.5f);
+    [Tooltip("The message to send to start motivate unit dialogue")]
+    public string m_MotivateDialogueStr = "Motivate";
+    [Tooltip("The variable key for motivation value")]
+    public string m_MotivationVarStr = "Motivation";
 
     [Header("Debugging References")]
     [Tooltip("The list of player unit gameobjects!")]
@@ -101,9 +105,10 @@ public class PlayerManager : MonoBehaviour {
             //displayMotivationScreen.SetActive(true);
             //while (displayMotivationScreen.activeSelf)
             //    yield return null;
-            string talkToWhatChar = playerUnitStat.m_AttackType.ToString() + "|" + playerUnitStat.m_characterCharis.ToString();
+            //string talkToWhatChar = playerUnitStat.m_AttackType.ToString() + "|" + playerUnitStat.m_characterCharis.ToString();
             // Try to talk to the character
-            theConversationChart.SendFungusMessage(talkToWhatChar);
+            //theConversationChart.SendFungusMessage(talkToWhatChar);
+            theConversationChart.SetIntegerVariable()
             //theConversationChart.GetExecutingBlocks()
             //theConversationChart.
             while (!m_hasFinishedConversing)

@@ -152,4 +152,6 @@ public class EnemyMoveState : MoveState {
         m_FSMOwner.m_animScript.setWalking(false);
         m_timeCounter = 0;
     }
+
+
 }

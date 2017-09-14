@@ -189,6 +189,8 @@ public class CharacterScript : MonoBehaviour {
             return wary;
         }
     }
+
+    public int m_Motivation = 50;
     
     public enum CHARACTER_CHARACTERISTIC
     {
