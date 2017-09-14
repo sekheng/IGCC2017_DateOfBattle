@@ -15,6 +15,8 @@ public class PlayerBattleMouse : MonoBehaviour {
     [Tooltip("The Position which the player clicked on!")]
     public Vector2 playerMouseLastClickedPos;
 
+    public GameObject selectUI;
+
     // Update is called once per frame
     //   void Update () {
     //       // If player pressed the mouse button down during the 1 frame
@@ -68,6 +70,7 @@ public class PlayerBattleMouse : MonoBehaviour {
             if (hit2D)
             {
                 playerClickedTile = hit2D.collider.GetComponent<TileScript>();
+                //MakeSelectUI();
             }
             else
             {
@@ -88,5 +91,27 @@ public class PlayerBattleMouse : MonoBehaviour {
             Gizmos.DrawWireSphere(playerClickedTile.transform.position, 1);
         }
     }
+
+    /// <summary>
+    /// When clicked, the selection UI appears on that object.
+    /// クリックすると、そのオブジェクトに選択UIを表示する
+    /// </summary>
+    private void MakeSelectUI()
+    {
+        Debug.Log("Select");
+        //  生成するオブジェクトの座標設定
+        selectUI.transform.position = playerClickedTile.transform.position;
+        GameObject UIobj = Instantiate(selectUI);
+        //selectUI.SetActive(false);
+
+        //  指定された時間にオブジェクトを消す
+        Destroy(UIobj, 2.0f);
+    }
+
+    //private void SelectTracking()
+    //{
+    //    selectUI.transform.position = playerClickedTile.transform.position;
+    //}
+
 #endif
 }
