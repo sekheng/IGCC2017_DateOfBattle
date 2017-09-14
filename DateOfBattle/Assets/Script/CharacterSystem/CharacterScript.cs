@@ -203,15 +203,21 @@ public class CharacterScript : MonoBehaviour {
     [Tooltip("What kind of characteristics!")]
     public CHARACTER_CHARACTERISTIC m_characterCharis;
 
-    [Tooltip("The sprite of the character")]
-    public Fungus.Character  charSprite;
+    [Tooltip("The unit range ring UI")]
+    public GameObject unitRangeRingGO;
 
     [Tooltip("Health bar")]
     public GameObject m_healthBar;
 
     // Use this for initialization
     void Start () {
-
+        // Need to readjust the ring!
+        if (unitRangeRingGO)
+        {
+            unitRangeRingGO.SetActive(true);
+            unitRangeRingGO.transform.localScale = new Vector3(m_Range, m_Range, 1);
+            unitRangeRingGO.SetActive(false);
+        }
         m_Morale = DEFAULT_MORALE;
         m_leftOverMoveSpeed = m_MoveSpeed;
         if (!damageEffect)

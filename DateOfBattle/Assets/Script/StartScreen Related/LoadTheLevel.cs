@@ -7,4 +7,17 @@ public class LoadTheLevel : MonoBehaviour {
     {
         PlayerSceneManager.Instance.LoadThenTransitScene(levelName);
     }
+
+    public void QuitTheGame()
+    {
+        Application.Quit();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitTheGame();
+        }
+    }
 }

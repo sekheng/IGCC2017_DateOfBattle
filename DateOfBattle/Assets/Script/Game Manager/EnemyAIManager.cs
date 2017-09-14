@@ -48,6 +48,9 @@ public class EnemyAIManager : MonoBehaviour {
         {
             // Wait for the some time before the AI make its move
             yield return timeForDelayAI;
+            // Activate the unit range ring!
+            CharacterScript charStat = enemyUnitGO.GetComponent<CharacterScript>();
+            charStat.unitRangeRingGO.SetActive(true);
             // Get the state machine!
             UnitFSM enemyUnitFSM = enemyUnitGO.GetComponent<UnitFSM>();
             // Interact with the state to inform it to move towards the player fortress!
@@ -56,7 +59,7 @@ public class EnemyAIManager : MonoBehaviour {
             // Wait till it finishes updating!
             while (enemyUnitFSM.updateStateCoroutine != null)
                 yield return null;
-
+            charStat.unitRangeRingGO.SetActive(false);
         }
         // When everything is done, then switch the turn at GameManager!
         GameManager.Instance.isItPlayerTurn = true;
