@@ -165,8 +165,9 @@ public class MoveState : GenericState {
     protected void doWalkingDirectionAnim(Vector3 otherPos)
     {
         Vector2 directionInWorldSpace2D = otherPos - transform.position;
+        directionInWorldSpace2D.Normalize();
         // If it is not going up or down!
-        if (Mathf.Approximately(0, directionInWorldSpace2D.y))
+        if (directionInWorldSpace2D.y < 0.1f && directionInWorldSpace2D.y > -0.1f)
         {
             // This means the unit is walking horizontally!
             if (directionInWorldSpace2D.x > 0)
