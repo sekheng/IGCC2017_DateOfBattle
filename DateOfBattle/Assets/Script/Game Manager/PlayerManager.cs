@@ -196,6 +196,7 @@ public class PlayerManager : MonoBehaviour {
             {
                 RemoveDestroyedUnit();
             }
+
         }
         CameraMovement.Instance.StopCamUpdateMovement();
         // Set it to be false!
