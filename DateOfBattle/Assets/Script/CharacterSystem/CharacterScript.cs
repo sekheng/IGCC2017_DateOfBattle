@@ -20,6 +20,7 @@ public class CharacterScript : MonoBehaviour {
     public TileScript myTile;
     public DamageTextControl damageText;
     public PerticleExplosion damageEffect;
+    public UIManager ui;
 
     [SerializeField, Tooltip("The unit max health")]
     protected int maximumHp;
@@ -210,6 +211,7 @@ public class CharacterScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         m_Morale = DEFAULT_MORALE;
         m_leftOverMoveSpeed = m_MoveSpeed;
         if (!damageEffect)
@@ -340,5 +342,24 @@ public class CharacterScript : MonoBehaviour {
     public void resetMoveSpeed()
     {
         m_leftOverMoveSpeed = m_MoveSpeed;
+    }
+
+    public bool DisplayUI()
+    {
+        if(!ui)
+        {
+            return false;
+        }
+        ui.DisplayUI(name, m_MoveSpeed, m_Morale, m_Range, m_AttackDamage, m_MaximumHp, m_Hp);
+        return true;
+    }
+    public bool HideUI()
+    {
+        if (!ui)
+        {
+            return false;
+        }
+        ui.HideUI();
+        return true;
     }
 }
