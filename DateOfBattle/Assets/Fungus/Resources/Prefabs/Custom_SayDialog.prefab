@@ -374,7 +374,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: af928bff88ad3e74f891f885c9ab020d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21a7c25b45cb62a4fbf9a85b4bd84c3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -546,7 +546,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SupposedToBeInvisibleNarrator
+  m_Text: ' '
 --- !u!114 &11488904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -767,8 +767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0.78700006}
-  m_AnchoredPosition: {x: -574.5, y: 14.130005}
-  m_SizeDelta: {x: 1082, y: -63}
+  m_AnchoredPosition: {x: 753, y: 14.130005}
+  m_SizeDelta: {x: 725, y: -63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22488900
 RectTransform:

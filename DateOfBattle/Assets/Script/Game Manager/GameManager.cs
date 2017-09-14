@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This will handle the entire game flow.
@@ -151,5 +152,15 @@ public class GameManager : MonoBehaviour {
     {
         // Have to hardcode this part as there is no time to do other parts.
         isItPlayerTurn = false;
+    }
+
+    public void RestartLevel()
+    {
+        PlayerSceneManager.Instance.ReloadScene();
+    }
+
+    public void GoBackToStart()
+    {
+        PlayerSceneManager.Instance.GoBackToStart();
     }
 }

@@ -12,6 +12,8 @@ public class PlayerSceneManager : MonoBehaviour {
     public string m_loadingSceneName = "LoadingScene";
     [Tooltip("The amount of waiting time")]
     public float m_waitLoadingTime = 0.5f;
+    [Tooltip("The start screen name")]
+    public string startScreenSceneName = "StartScreen";
 
     // The singleton of this class!
     public static PlayerSceneManager Instance
@@ -66,7 +68,17 @@ public class PlayerSceneManager : MonoBehaviour {
         yield return new WaitForSecondsRealtime(m_waitLoadingTime);
         AsyncOperation otherSceneLoad = SceneManager.LoadSceneAsync(sceneName);
         yield return otherSceneLoad;
-        yield return SceneManager.UnloadSceneAsync(m_loadingSceneName);
+        UnloadScene(m_loadingSceneName);
         yield break;
+    }
+
+    public void ReloadScene()
+    {
+        LoadThenTransitScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoBackToStart()
+    {
+        LoadThenTransitScene(startScreenSceneName);
     }
 }
