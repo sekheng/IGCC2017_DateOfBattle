@@ -136,6 +136,7 @@ public class PlayerManager : MonoBehaviour {
             {
                 // Only Successful interaction will mean being able to move the unit!
                 m_endPlayerTurnScreen.SetActive(true);
+                playerUnitStat.unitRangeRingGO.SetActive(true);
             }
             playerMouseInput.enabled = true;
             // Wait for next frame
@@ -198,6 +199,7 @@ public class PlayerManager : MonoBehaviour {
                 m_playerNotInteractGOList.Remove(firstTileClicked.gameObject);
                 m_lastActionUnitTile = firstTileClicked;
                 firstTileClicked.GetComponent<SpriteRenderer>().color = colorOfUsedUnit;
+                playerUnitStat.unitRangeRingGO.SetActive(false);
             }
             else
             {

@@ -211,7 +211,7 @@ MonoBehaviour:
   wary: 0
   m_Motivation: 50
   m_characterCharis: 0
-  charSprite: {fileID: 0}
+  unitRangeRingGO: {fileID: 0}
   m_healthBar: {fileID: 0}
 --- !u!114 &91488976
 MonoBehaviour:
@@ -263,10 +263,6 @@ Prefab:
     - target: {fileID: 4361363076579028, guid: 1d1c445b3d199144cb46daacaa034b84, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1776414546195298, guid: 1d1c445b3d199144cb46daacaa034b84, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d1c445b3d199144cb46daacaa034b84, type: 2}
@@ -412,7 +408,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1916733453491166, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
         type: 2}
@@ -432,6 +428,11 @@ Prefab:
         type: 2}
       propertyPath: m_Motivation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
+        type: 2}
+      propertyPath: unitRangeRingGO
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
@@ -900,7 +901,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1916733453491166, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
         type: 2}
@@ -1137,10 +1138,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1682786987694812, guid: be30945ddd0ab524bb35321f067ce663, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be30945ddd0ab524bb35321f067ce663, type: 2}
   m_IsPrefabParent: 0
@@ -1189,24 +1186,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1916733453491166, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
         type: 2}
-      propertyPath: charSprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
-        type: 2}
-      propertyPath: warlike
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
-        type: 2}
-      propertyPath: m_Motivation
-      value: 0
+      propertyPath: attackDamage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
@@ -3919,7 +3902,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1916733453491166, guid: 71924a46c666aee43b918352c32a32f5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114903716245700164, guid: 71924a46c666aee43b918352c32a32f5,
         type: 2}
@@ -4360,7 +4343,7 @@ MonoBehaviour:
   wary: 0
   m_Motivation: 50
   m_characterCharis: 0
-  charSprite: {fileID: 0}
+  unitRangeRingGO: {fileID: 0}
   m_healthBar: {fileID: 0}
 --- !u!114 &1241618711
 MonoBehaviour:
@@ -5747,15 +5730,6 @@ Prefab:
     - target: {fileID: 4202100014385852, guid: 9b470666712d3554ca546c2a75d0ea31, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915798020279296, guid: 9b470666712d3554ca546c2a75d0ea31, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114957937220057336, guid: 9b470666712d3554ca546c2a75d0ea31,
-        type: 2}
-      propertyPath: attackDamage
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b470666712d3554ca546c2a75d0ea31, type: 2}
