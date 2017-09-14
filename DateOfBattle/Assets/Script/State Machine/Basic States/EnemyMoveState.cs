@@ -11,6 +11,8 @@ public class EnemyMoveState : MoveState {
     public GameObject playerFortressTile;
     [Tooltip("Has begin attacked. To keep track whether is it attacking or not!")]
     public bool isItAttacking = false;
+    [Tooltip("The amount of time to wait then it starts to find the nearest unit")]
+    public float m_findOtherUnitTime = 0.1f;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -53,11 +55,35 @@ public class EnemyMoveState : MoveState {
         {
             PathRequestManager.RequestPath(transform.position, moveTowardsPos, OnPathFound);
         }
+        float timeCounter2nd = 0;
         // Wait till it has find the path!
         while (!hasFinishedPath)
         {
             m_timeCounter += Time.deltaTime;
-            if (m_timeCounter > m_HowManySecond)
+            timeCounter2nd += Time.deltaTime;
+            if (timeCounter2nd > m_findOtherUnitTime)
+            {
+                // Then find the nearest unit!
+                float nearestDist = float.MaxValue;
+                GameObject nearestUnit = null;
+                // Have to hardcode to be like this!
+                foreach (GameObject go in PlayerManager.Instance.m_playerGOList)
+                {
+                    if (Vector2.Distance(go.transform.position, transform.position) < nearestDist)
+                    {
+                        nearestDist = Vector2.Distance(go.transform.position, transform.position);
+                        nearestUnit = go;
+                    }
+                }
+                // If there is the nearest unit!
+                if (nearestUnit)
+                {
+                    PathRequestManager.RequestPath(transform.position, nearestUnit.transform.position, OnPathFound);
+                }
+                // reset the time counter
+                timeCounter2nd = 0;
+            }
+            else if (m_timeCounter > m_HowManySecond)
                 yield break;
             yield return null;
         }

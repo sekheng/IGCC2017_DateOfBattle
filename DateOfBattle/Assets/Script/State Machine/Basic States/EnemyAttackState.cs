@@ -14,6 +14,12 @@ public class EnemyAttackState : AttackState {
 
     public override IEnumerator updateState()
     {
+        if (!targetChara)
+        {
+            m_FSMOwner.GetGenericState("MoveState").interactWithState("OUT_OF_RANGE");
+            m_FSMOwner.ChangeCurrentState("MoveState");
+            yield break;
+        }
         Vector3 directionFromPositionToTarget = targetChara.transform.position - transform.position;
         // If the unit is in range, then attack!
         if (targetChara && charStats.m_Range >= directionFromPositionToTarget.magnitude)
@@ -23,6 +29,7 @@ public class EnemyAttackState : AttackState {
             //yield return null;
             //yield return null;
             //yield return null;
+            CamFocusOnUnitTarget(directionFromPositionToTarget);
             yield return new WaitForSeconds(m_attackAnimDelay);
             doAnimationBasedOnDirection(directionFromPositionToTarget);
             m_FSMOwner.m_animScript.setAttacking(true);
@@ -34,6 +41,7 @@ public class EnemyAttackState : AttackState {
                 // Tell the move state that we have defeated the unit!
                 m_FSMOwner.GetGenericState("MoveState").interactWithState("DEFEAT_UNIT");
             }
+            yield return new WaitForSeconds(m_DelayUpdateForCam);
         }
         else
         {

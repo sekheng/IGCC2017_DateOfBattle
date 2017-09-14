@@ -6,10 +6,13 @@ using UnityEngine;
 /// This will be the attack state of the unit
 /// </summary>
 public class AttackState : GenericState{
+    [Header("Values and References required for Attack State")]
+    [Tooltip("To delay the update by some time so the camera will stay a bit longer when unit is attacking each other")]
+    public float m_DelayUpdateForCam = 0.5f;
 
+    [Header("The debugging and linking values")]
     [Tooltip("To get the character stats. Linking is not required.")]
     public CharacterScript charStats;
-    [Header("The debugging and linking values")]
     [Tooltip("The chara to attack towards to")]
     public CharacterScript targetChara;
     // Use this for initialization
@@ -35,6 +38,7 @@ public class AttackState : GenericState{
         isOnRange = m_Range > directionFromPosToTarget.magnitude;
         if (isOnRange)
         {
+            CamFocusOnUnitTarget(directionFromPosToTarget);
             // set direction and animate!
             doAnimationBasedOnDirection(directionFromPosToTarget);
             m_FSMOwner.m_animScript.setAttacking(true);
@@ -46,6 +50,7 @@ public class AttackState : GenericState{
                 //TODO: for now, Destroy the game object of the Unit until there is a particle effect system to enhance the graphics
                 Destroy(targetChara.gameObject);
             }
+            yield return new WaitForSeconds(m_DelayUpdateForCam);
         }
         else
         {
@@ -122,5 +127,11 @@ public class AttackState : GenericState{
                 m_FSMOwner.m_animScript.setWalkDirection(1);
             }
         }
+    }
+
+    protected void CamFocusOnUnitTarget(Vector3 directionToTarget)
+    {
+        // We just need the direction to the target!
+        CameraMovement.Instance.MoveTowardsPosition(transform.position + directionToTarget * 0.5f);
     }
 }

@@ -10,6 +10,8 @@ public class PlayerSceneManager : MonoBehaviour {
     [Header("Values and References needed for Player Scene Manager")]
     [Tooltip("The loading scene name")]
     public string m_loadingSceneName = "LoadingScene";
+    [Tooltip("The amount of waiting time")]
+    public float m_waitLoadingTime = 0.5f;
 
     // The singleton of this class!
     public static PlayerSceneManager Instance
@@ -44,6 +46,10 @@ public class PlayerSceneManager : MonoBehaviour {
     /// <param name="sceneName"></param>
     public void LoadThenTransitScene(string sceneName)
     {
+        //Scene loadingScene = SceneManager.GetSceneByName(m_loadingSceneName);
+        SceneManager.LoadScene(m_loadingSceneName);
+        //SceneManager.SetActiveScene(loadingScene);
+        StartCoroutine(loadingOtherSceneAsync(sceneName));
     }
 
     /// <summary>
@@ -52,6 +58,15 @@ public class PlayerSceneManager : MonoBehaviour {
     /// <param name="sceneName">The scene name to be unloaded</param>
     public void UnloadScene(string sceneName)
     {
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
 
+    IEnumerator loadingOtherSceneAsync(string sceneName)
+    {
+        yield return new WaitForSecondsRealtime(m_waitLoadingTime);
+        AsyncOperation otherSceneLoad = SceneManager.LoadSceneAsync(sceneName);
+        yield return otherSceneLoad;
+        yield return SceneManager.UnloadSceneAsync(m_loadingSceneName);
+        yield break;
     }
 }
