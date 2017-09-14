@@ -9,13 +9,25 @@ using UnityEngine.EventSystems;
 /// Only enabled during player's turn!
 /// </summary>
 public class PlayerBattleMouse : MonoBehaviour {
+    [Header("Values and References needed for PlayerBattleMouse")]
+    [Tooltip("The amount of time to wait for the temp click to disappear")]
+    public float m_TempClickTimer = 0.5f;
+    [Tooltip("The temporary click stuff of prefab")]
+    public GameObject selectUI;
+    [Tooltip("The prefab that has clear indication of the object being pressed")]
+    public GameObject playerUnitSelectUI;
+
     [Header("Debugging References")]
     [Tooltip("This is to know which Tile the player has clicked on. Do not mess with it!")]
     public TileScript playerClickedTile;
     [Tooltip("The Position which the player clicked on!")]
     public Vector2 playerMouseLastClickedPos;
+    [Tooltip("The actual gameobject of the playerUnitSelect because the gameobject tends to get destroyed")]
+    public GameObject playerSelectGO;
+    [Tooltip("The actual gameobject of temp select")]
+    public GameObject tempSelectGO;
 
-    public GameObject selectUI;
+    Coroutine m_TimeCounterRoutine;
 
     // Update is called once per frame
     //   void Update () {
@@ -70,7 +82,8 @@ public class PlayerBattleMouse : MonoBehaviour {
             if (hit2D)
             {
                 playerClickedTile = hit2D.collider.GetComponent<TileScript>();
-                //MakeSelectUI();
+                if (selectUI)
+                    MakeSelectUI();
             }
             else
             {
@@ -100,12 +113,51 @@ public class PlayerBattleMouse : MonoBehaviour {
     {
         Debug.Log("Select");
         //  生成するオブジェクトの座標設定
-        selectUI.transform.position = playerClickedTile.transform.position;
-        GameObject UIobj = Instantiate(selectUI);
-        //selectUI.SetActive(false);
+        //selectUI.transform.position = playerClickedTile.transform.position;
+        //GameObject UIobj = Instantiate(selectUI);
+        ////selectUI.SetActive(false);
 
-        //  指定された時間にオブジェクトを消す
-        Destroy(UIobj, 2.0f);
+        ////  指定された時間にオブジェクトを消す
+        //Destroy(UIobj, 2.0f);
+        if (!tempSelectGO)
+            tempSelectGO = Instantiate(selectUI);
+        tempSelectGO.SetActive(true);
+        tempSelectGO.transform.position = playerClickedTile.transform.position;
+        tempSelectGO.transform.SetParent(playerClickedTile.transform);
+        if (m_TimeCounterRoutine != null)
+            StopCoroutine(m_TimeCounterRoutine);
+        m_TimeCounterRoutine = StartCoroutine(UpdateForTempClickDisappear());
+    }
+
+    IEnumerator UpdateForTempClickDisappear()
+    {
+        yield return new WaitForSeconds(m_TempClickTimer);
+        tempSelectGO.transform.SetParent(null);
+        tempSelectGO.SetActive(false);
+        m_TimeCounterRoutine = null;
+        yield break;
+    }
+
+    public void SetUnitIndicatorPermanent(Transform unitTransform)
+    {
+        if (unitTransform)
+        {
+            // If no unit select indicator, then instantiate it!
+            if (!playerSelectGO)
+                playerSelectGO = Instantiate(playerUnitSelectUI);
+            playerSelectGO.SetActive(true);
+            playerSelectGO.transform.position = unitTransform.position;
+            playerSelectGO.transform.SetParent(unitTransform);
+        }
+        else
+        {
+            if (playerSelectGO)
+            {
+                // Which means set it to be inactive!
+                playerSelectGO.transform.SetParent(null);
+                playerSelectGO.SetActive(false);
+            }
+        }
     }
 
     //private void SelectTracking()

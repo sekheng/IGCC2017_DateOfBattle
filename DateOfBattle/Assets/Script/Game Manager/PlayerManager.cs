@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour {
     public string m_MotivationVarStr = "Motivation";
     [Tooltip("The variable key for Attack Type")]
     public string m_AttckTypeVarStr = "AttackType";
+    [Tooltip("The Unit Stat UI Window")]
+    public UIManager UnitStatWindowManager;
 
     [Header("Debugging References")]
     [Tooltip("The list of player unit gameobjects!")]
@@ -98,10 +100,14 @@ public class PlayerManager : MonoBehaviour {
             }
             CameraMovement.Instance.StopCamUpdateMovement();
             TileScript firstTileClicked = playerMouseInput.playerClickedTile;
+            // then set the green indicator!
+            playerMouseInput.SetUnitIndicatorPermanent(firstTileClicked.transform);
             // Set it to null and prevent player from pressing!
             playerMouseInput.playerClickedTile = null;
             playerMouseInput.enabled = false;
             CharacterScript playerUnitStat = firstTileClicked.GetComponent<CharacterScript>();
+            UnitStatWindowManager.gameObject.SetActive(true);
+            UnitStatWindowManager.DisplayUI(playerUnitStat);
             m_hasFinishedConversing = false;
             // set the motivation to be true then wait for it to be inactive!
             //displayMotivationScreen.SetActive(true);
@@ -117,7 +123,7 @@ public class PlayerManager : MonoBehaviour {
             {
                 yield return null;
             }
-            // then get
+            UnitStatWindowManager.gameObject.SetActive(false);
             // Then we wait till the next tile that the player clicked on or maybe there is none!
             UnitFSM playerFSM = firstTileClicked.GetComponent<UnitFSM>();
             yield return null;
@@ -184,6 +190,7 @@ public class PlayerManager : MonoBehaviour {
             #endregion
             // Unblock the raycast!
             hasUIBlockRaycast = false;
+            playerMouseInput.SetUnitIndicatorPermanent(null);
             if (firstTileClicked)
             {
                 playerUnitStat.resetMoveSpeed();
